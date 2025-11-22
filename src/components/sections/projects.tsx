@@ -23,10 +23,10 @@ export function Projects() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div>
             <span className="text-primary font-bold tracking-widest text-xs uppercase">
-              Portfolio
+              CASE STUDIES  
             </span>
             <h2 className="text-4xl md:text-5xl font-light mt-4 text-black">
-              Featured Projects
+              Selected Work
             </h2>
           </div>
 
