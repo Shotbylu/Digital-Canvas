@@ -2,8 +2,10 @@ import {
   education,
   experiences,
   timelineIcons,
+  certifications,
 } from '@/lib/data';
 import { cn } from '@/lib/utils';
+import { Award } from 'lucide-react';
 
 export function Experience() {
   const WorkIcon = timelineIcons.work;
@@ -39,7 +41,7 @@ export function Experience() {
           </div>
         </div>
 
-        <div>
+        <div className="mb-20">
           <div className="flex items-center gap-4 mb-12">
             <EducationIcon className="text-primary" />
             <h2 className="text-3xl font-light">Education</h2>
@@ -58,6 +60,21 @@ export function Experience() {
                 </div>
                 <h3 className="text-lg font-bold">{edu.title}</h3>
                 <p className="text-gray-600 text-sm">{edu.institution}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div className="flex items-center gap-4 mb-12">
+            <Award className="text-primary" />
+            <h2 className="text-3xl font-light">Certifications & Training</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-6 text-sm">
+            {certifications.map((cert, index) => (
+              <div key={index} className="flex flex-col">
+                <span className='font-bold'>{cert.issuer}</span>
+                <span className='text-gray-600'>{cert.title}</span>
               </div>
             ))}
           </div>

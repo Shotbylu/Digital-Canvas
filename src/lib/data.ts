@@ -131,6 +131,23 @@ export const education: {
   },
 ];
 
+export const certifications: {
+  issuer: string;
+  title: string;
+}[] = [
+  { issuer: 'Microsoft', title: 'Azure Data Fundamentals (DP-900)' },
+  { issuer: 'Adobe', title: 'Photoshop Essential Skills' },
+  { issuer: 'Microsoft', title: 'Career Essentials in Data Analysis' },
+  { issuer: 'Google', title: 'Digital Marketing Certification' },
+  { issuer: 'IBM', title: 'Python for Data Science' },
+  { issuer: 'Johns Hopkins University', title: 'Advanced Statistics for Data Science' },
+  { issuer: 'HubSpot', title: 'SEO' },
+  { issuer: 'HubSpot', title: 'Email Marketing' },
+  { issuer: 'HubSpot', title: 'Marketing Software' },
+  { issuer: 'Google', title: 'Google Ads Search Certification' },
+];
+
+
 export const timelineIcons = {
   work: Briefcase,
   education: GraduationCap,
