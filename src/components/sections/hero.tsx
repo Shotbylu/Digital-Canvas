@@ -47,7 +47,12 @@ export function Hero() {
                   View Case Studies <ArrowRight size={18} />
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="w-full sm:w-auto border-white text-white font-medium hover:bg-white/10 transition-colors">
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-2 border-white text-white font-semibold bg-white/5 hover:bg-white/15 transition-colors rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-sm"
+              >
                 <a href="#">
                   <Download size={18} /> Download CV
                 </a>
