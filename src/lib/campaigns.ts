@@ -274,40 +274,40 @@ export const campaigns: Campaign[] = [
     assets: [
       {
         type: 'video',
-        src: '/assets/campaigns/south32-community-2024/insta_video_76990.MP4',
-        poster: '/assets/campaigns/south32-community-2024/South32 Cover.JPG',
+        src: '/assets/campaigns/empangeni-open-day-2023/insta_video_76990.MP4',
+        poster: '/assets/campaigns/empangeni-open-day-2023/South32 Cover.JPG',
         alt: 'South32 Cover.jpg',
         width: 1080,
         height: 1920
       },
       {
         type: 'image',
-        src: '/assets/campaigns/south32-community-2024/South 1.jpg',
-        poster: '/assets/campaigns/south32-community-2024/South32 Cover.JPG',
+        src: '/assets/campaigns/empangeni-open-day-2023/South 1.jpg',
+        poster: '/assets/campaigns/empangeni-open-day-2023/South32 Cover.JPG',
         alt: 'South32 Cover.jpg',
         width: 1080,
         height: 1080
       },
       {
         type: 'image',
-        src: '/assets/campaigns/south32-community-2024/South 2.jpg',
-        poster: '/assets/campaigns/south32-community-2024/South32 Cover.JPG',
+        src: '/assets/campaigns/empangeni-open-day-2023/South 2.jpg',
+        poster: '/assets/campaigns/empangeni-open-day-2023/South32 Cover.JPG',
         alt: 'High School Leadership Programme Group Shot',
         width: 1080,
         height: 1920
       },
       {
         type: 'image',
-        src: '/assets/campaigns/south32-community-2024/South 3.jpg',
-        poster: '/assets/campaigns/south32-community-2024/South32 Cover.JPG',
+        src: '/assets/campaigns/empangeni-open-day-2023/South 3.jpg',
+        poster: '/assets/campaigns/empangeni-open-day-2023/South32 Cover.JPG',
         alt: 'Campaign Poster Visuals',
         width: 1080,
         height: 1920
       },
       {
         type: 'image',
-        src: '/assets/campaigns/south32-community-2024/South 4.jpg',
-        poster: '/assets/campaigns/south32-community-2024/South32 Cover.JPG',
+        src: '/assets/campaigns/empangeni-open-day-2023/South 4.jpg',
+        poster: '/assets/campaigns/empangeni-open-day-2023/South32 Cover.JPG',
         alt: "Trek4Mandela Women's Month Spotlight Series",
         width: 1080,
         height: 1920
@@ -448,24 +448,24 @@ export const campaigns: Campaign[] = [
     assets: [
       {
         type: 'image',
-        src: '/assets/campaigns/sasol-green-future-2024/Sasol1.jpg',
-        poster: '/assets/campaigns/sasol-green-future-2024/sasol-image.jpg',
+        src: '/assets/campaigns/south32-community-2024/Sasol1.jpg',
+        poster: '/assets/campaigns/south32-community-2024/sasol-image.jpg',
         alt: 'Community upliftment campaign creative',
         width: 1024,
         height: 683
       },
       {
         type: 'image',
-        src: '/assets/campaigns/sasol-green-future-2024/Sasol2.jpg',
-        poster: '/assets/campaigns/sasol-green-future-2024/sasol-image.jpg',
+        src: '/assets/campaigns/south32-community-2024/Sasol2.jpg',
+        poster: '/assets/campaigns/south32-community-2024/sasol-image.jpg',
         alt: 'Community upliftment campaign creative',
         width: 1080,
         height: 1080
       },
       {
         type: 'image',
-        src: '/assets/campaigns/sasol-green-future-2024/Sasol3.jpg',
-        poster: '/assets/campaigns/sasol-green-future-2024/sasol-image.jpg',
+        src: '/assets/campaigns/south32-community-2024/Sasol3.jpg',
+        poster: '/assets/campaigns/south32-community-2024/sasol-image.jpg',
         alt: 'Community upliftment campaign creative',
         width: 1080,
         height: 1080
