@@ -7,7 +7,7 @@ export function Stats() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left divide-x divide-zinc-800">
           <div className="md:pl-4">
             <div className="text-4xl md:text-5xl font-bold text-primary">
-              R1M+
+              R350000+
             </div>
             <div className="text-xs text-gray-500 uppercase mt-2 tracking-widest">
               Managed Ad Spend
