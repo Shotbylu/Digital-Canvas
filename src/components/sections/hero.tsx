@@ -73,7 +73,7 @@ export function Hero() {
             </div>
             <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 font-mono text-xs">
               <div>LUNGELO SIBISI</div>
-              <div className="font-bold mt-1">SEO, CRM ARCHITECT</div>
+              <div className="font-bold mt-1">SEO, CRM-ARCHITECT</div>
             </div>
           </div>
         </div>
