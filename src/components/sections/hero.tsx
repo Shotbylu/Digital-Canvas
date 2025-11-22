@@ -36,7 +36,7 @@ export function Hero() {
               .
             </h1>
             <p className="text-gray-400 max-w-xl text-lg mb-10 font-light leading-relaxed">
-              I specialize in paid social across Meta, Google, and LinkedIn Ads.
+              I specialize in SEO, paid social across Meta, Google, and LinkedIn Ads.
               With experience in Automotive, Energy, and Mining, I don&apos;t just
               run ads, I engineer ROI.
             </p>
@@ -73,7 +73,7 @@ export function Hero() {
             </div>
             <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 font-mono text-xs">
               <div>LUNGELO SIBISI</div>
-              <div className="font-bold mt-1">DIGITAL MARKETING SPECIALIST</div>
+              <div className="font-bold mt-1">SEO, CRM ARCHITECT</div>
             </div>
           </div>
         </div>
