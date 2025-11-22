@@ -191,7 +191,6 @@ export const campaigns: Campaign[] = [
       { label: 'Ad Recall Lift', value: 'TBC' }
     ],
     tech: ['Meta Business Suite', 'GA4', 'Rival IQ', 'Power BI', 'HubSpot'],
-    caseStudyUrl: '/assets/case-studies/mazda-assured-q3-2025.pdf',
     externalUrl: 'https://www.mazda.co.za/'
   },
   {
@@ -388,20 +387,6 @@ export const campaigns: Campaign[] = [
         type: 'image',
         src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS7.jpg',
         alt: 'LinkedIn carousel ad campaign following best-practice engagement guidelines',
-        width: 1440,
-        height: 2880
-      },
-      {
-        type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS8.jpg',
-        alt: 'CEO executive positioning on The Penuel Show - brand advocacy and PR',
-        width: 1440,
-        height: 2880
-      },
-      {
-        type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS9.jpg',
-        alt: 'Graphic design and content creation - posters and promotional materials',
         width: 1440,
         height: 2880
       }

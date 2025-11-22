@@ -14,10 +14,21 @@ interface CampaignCardProps {
 }
 
 export function CampaignCard({ campaign, onOpen }: CampaignCardProps) {
+  const hasAssets = campaign.assets.length > 0;
   const preview = campaign.assets[0];
-  const previewSrc = preview.type === 'video' && preview.poster ? preview.poster : preview.src;
+  const previewSrc =
+    preview?.type === 'video' && preview.poster ? preview.poster : preview?.src || '/assets/campaigns/IMG_1.jpg';
+  const previewAlt = preview?.alt || `${campaign.title} preview image`;
+  const previewWidth = preview?.width || 1600;
+  const previewHeight = preview?.height || 1600;
+
+  const handleOpen = () => {
+    if (!hasAssets) return;
+    onOpen(campaign, 0);
+  };
 
   const handleKeyDown = (event: KeyboardEvent) => {
+    if (!hasAssets) return;
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
       onOpen(campaign, 0);
@@ -30,19 +41,19 @@ export function CampaignCard({ campaign, onOpen }: CampaignCardProps) {
         role="button"
         tabIndex={0}
         onKeyDown={handleKeyDown}
-        onClick={() => onOpen(campaign, 0)}
+        onClick={handleOpen}
         className="relative aspect-[4/5] w-full overflow-hidden bg-muted outline-none"
         aria-label={`Open case study for ${campaign.title}`}
       >
         <Image
           src={previewSrc}
-          alt={preview.alt}
-          width={preview.width}
-          height={preview.height}
+          alt={previewAlt}
+          width={previewWidth}
+          height={previewHeight}
           className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
           priority={false}
         />
-        {preview.type === 'video' && (
+        {preview?.type === 'video' && (
           <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black/10 via-black/20 to-black/40">
             <span className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm transition group-hover:bg-white">
               <Play className="h-4 w-4" />
@@ -76,7 +87,7 @@ export function CampaignCard({ campaign, onOpen }: CampaignCardProps) {
         </div>
 
         <div className="flex gap-3">
-          <Button className="flex-1" onClick={() => onOpen(campaign, 0)}>
+          <Button className="flex-1" onClick={handleOpen} disabled={!hasAssets} aria-disabled={!hasAssets}>
             View Case Study
           </Button>
           {campaign.externalUrl && (
