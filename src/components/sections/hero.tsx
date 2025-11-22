@@ -28,17 +28,17 @@ export function Hero() {
               JHB • Digital Marketing Specialist
             </span>
             <h1 className="text-5xl md:text-7xl font-bold text-white mt-6 mb-8 leading-[1.05] tracking-tight">
-              Targeting conversions <br />
-              with{' '}
+              Converting Ad spend <br />
+              into{' '}
               <span className="font-light italic text-gray-300">
-                precision
+                revenue
               </span>
               .
             </h1>
             <p className="text-gray-400 max-w-xl text-lg mb-10 font-light leading-relaxed">
               I specialize in paid social across Meta, Google, and LinkedIn Ads.
               With experience in Automotive, Energy, and Mining, I don&apos;t just
-              run ads—I engineer ROI.
+              run ads, I engineer ROI.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -68,7 +68,7 @@ export function Hero() {
             </div>
             <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 font-mono text-xs">
               <div>LUNGELO SIBISI</div>
-              <div className="font-bold mt-1">DIGITAL SPECIALIST</div>
+              <div className="font-bold mt-1">DIGITAL MARKETING SPECIALIST</div>
             </div>
           </div>
         </div>
