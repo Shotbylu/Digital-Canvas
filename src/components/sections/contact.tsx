@@ -1,7 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
-import { useFormState } from 'react-dom';
+import { useRef, useActionState } from 'react';
 import {
   Github,
   Instagram,
@@ -40,7 +39,7 @@ export function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   
   const initialState: ContactFormState = { success: false, message: '' };
-  const [state, formAction] = useFormState(submitContactForm, initialState);
+  const [state, formAction] = useActionState(submitContactForm, initialState);
 
   if (state.success && formRef.current) {
     toast({
