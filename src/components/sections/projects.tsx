@@ -1,58 +1,63 @@
 'use client';
-import { useState } from 'react';
-import { projects } from '@/lib/data';
-import { PortfolioItem } from './portfolio-item';
+
+import React, { useCallback, useMemo, useState } from 'react';
+import campaignsData, { Campaign } from '@/lib/campaigns';
+import { CampaignCard, VideoModal } from '@/components/campaigns';
 
 export function Projects() {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeCampaign, setActiveCampaign] = useState<Campaign | null>(null);
+  const [initialAssetIndex, setInitialAssetIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const filteredProjects =
-    activeFilter === 'All'
-      ? projects
-      : projects.filter(
-          (p) =>
-            p.category.includes(activeFilter) ||
-            (activeFilter === 'Marketing' && (p.category === 'Strategy'))
-        );
+  const allCampaigns = useMemo(() => campaignsData, []);
 
-  const filters = ['All', 'Marketing', 'Data Science', 'Development'];
+  const openCampaignModal = useCallback((campaign: Campaign, assetIndex: number) => {
+    setActiveCampaign(campaign);
+    setInitialAssetIndex(assetIndex);
+    setIsModalOpen(true);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setIsModalOpen(false);
+    setActiveCampaign(null);
+    setInitialAssetIndex(0);
+  }, []);
 
   return (
-    <section id="work" className="py-24 bg-white">
-      <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-          <div>
-            <span className="text-primary font-bold tracking-widest text-xs uppercase">
-              CASE STUDIES  
-            </span>
-            <h2 className="text-4xl md:text-5xl font-light mt-4 text-black">
-              Selected Work
-            </h2>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            {filters.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className={`px-6 py-2 rounded-full border transition-all text-sm font-medium ${
-                  activeFilter === cat
-                    ? 'bg-black text-white border-black'
-                    : 'border-gray-200 text-gray-500 hover:border-black hover:text-black'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+    <section
+      id="work"
+      className="relative overflow-hidden bg-gradient-to-b from-[#f9fafb] to-[#ffffff] py-24 sm:py-32"
+    >
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl space-y-6 pb-12">
+          <span className="inline-flex items-center rounded-full border border-[#fed7aa] bg-[#fff7ed] px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-[#c2410c]">
+            Case Studies
+          </span>
+          <h2 className="text-4xl font-semibold tracking-tight text-[#111827] sm:text-5xl">
+            Integrated Campaign Portfolio
+          </h2>
+          <p className="max-w-2xl text-base leading-relaxed text-[#4b5563] sm:text-lg">
+            A curated selection of high-impact campaigns, showcasing strategic thinking and measurable results across various clients and channels. Click to view the full case study.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <PortfolioItem key={project.id} {...project} />
-          ))}
+        <div className="mt-14">
+          {allCampaigns.length > 0 && (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {allCampaigns.map((campaign) => (
+                <CampaignCard key={campaign.id} campaign={campaign} onOpen={openCampaignModal} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
+
+      <VideoModal
+        campaign={activeCampaign}
+        initialAssetIndex={initialAssetIndex}
+        isOpen={isModalOpen}
+        onClose={handleClose}
+      />
     </section>
   );
 }
