@@ -80,48 +80,48 @@ export const campaigns: Campaign[] = [
     assets: [
       {
         type: 'video',
-        src: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/MAWR_06_240 - Mazda 3 6 A 1080 x 1920.mp4',
-        poster: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/Brand Meaning.jpg',
+        src: '/assets/documents/mazda-brand-meaning-lvl2-2025/MAWR_06_240 - Mazda 3 6 A 1080 x 1920.mp4',
+        poster: '/assets/documents/mazda-brand-meaning-lvl2-2025/Brand Meaning.jpg',
         alt: 'Brand Meaning Level 2 — hero cut',
         width: 1080,
         height: 1920
       },
       {
         type: 'video',
-        src: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/MAWR_06_223 - CX-5_6_A_Graded 1080 x 1920.mp4',
-        poster: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/bm-level2-feature1-poster.svg',
+        src: '/assets/documents/mazda-brand-meaning-lvl2-2025/MAWR_06_223 - CX-5_6_A_Graded 1080 x 1920.mp4',
+        poster: '/assets/documents/mazda-brand-meaning-lvl2-2025/bm-level2-feature1-poster.svg',
         alt: 'Design & craft feature cut',
         width: 1080,
         height: 1920
       },
       {
         type: 'video',
-        src: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/MAWR_06_214 - CX-60_06_A-2 Graded 1080 x 1920 (1).mp4',
-        poster: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/bm-level2-feature2-poster.svg',
+        src: '/assets/documents/mazda-brand-meaning-lvl2-2025/MAWR_06_214 - CX-60_06_A-2 Graded 1080 x 1920 (1).mp4',
+        poster: '/assets/documents/mazda-brand-meaning-lvl2-2025/bm-level2-feature2-poster.svg',
         alt: 'Joy of driving feature cut',
         width: 1080,
         height: 1920
       },
       {
         type: 'image',
-        src: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/Billboard1.JPG',
-        poster: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/bm-level2-feature2-poster.svg',
+        src: '/assets/documents/mazda-brand-meaning-lvl2-2025/Billboard1.JPG',
+        poster: '/assets/documents/mazda-brand-meaning-lvl2-2025/bm-level2-feature2-poster.svg',
         alt: 'Joy of driving feature cut',
         width: 1080,
         height: 1920
       },
       {
         type: 'video',
-        src: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/B 1080 x 1920.mp4',
-        poster: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/bm-level2-feature2-poster.svg',
+        src: '/assets/documents/mazda-brand-meaning-lvl2-2025/B 1080 x 1920.mp4',
+        poster: '/assets/documents/mazda-brand-meaning-lvl2-2025/bm-level2-feature2-poster.svg',
         alt: 'Joy of driving feature cut',
         width: 1080,
         height: 1920
       },
       {
         type: 'video',
-        src: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/B2 1080 x 1920.mp4',
-        poster: '/assets/campaigns/mazda-brand-meaning-lvl2-2025/bm-level2-feature2-poster.svg',
+        src: '/assets/documents/mazda-brand-meaning-lvl2-2025/B2 1080 x 1920.mp4',
+        poster: '/assets/documents/mazda-brand-meaning-lvl2-2025/bm-level2-feature2-poster.svg',
         alt: 'Joy of driving feature cut',
         width: 1080,
         height: 1920
@@ -154,30 +154,30 @@ export const campaigns: Campaign[] = [
     assets: [
       {
         type: 'image',
-        src: '/assets/campaigns/mazda-gfv-q3-2025/Mazda2 Retail.jpg',
-        poster: '/assets/campaigns/mazda-gfv-q3-2025/Mazda2.jpg',
+        src: '/assets/documents/mazda-gfv-q3-2025/Mazda2 Retail.jpg',
+        poster: '/assets/documents/mazda-gfv-q3-2025/Mazda2.jpg',
         alt: 'Mazda2 9:16 paid social reel',
         width: 1080,
         height: 1920
       },
       {
         type: 'image',
-        src: '/assets/campaigns/mazda-gfv-q3-2025/Mazda2 Retail2.jpg',
+        src: '/assets/documents/mazda-gfv-q3-2025/Mazda2 Retail2.jpg',
         alt: 'Mazda2 headline frame',
         width: 1080,
         height: 1920
       },
       {
         type: 'image',
-        src: '/assets/campaigns/mazda-gfv-q3-2025/Mazda2 Retail3.png',
+        src: '/assets/documents/mazda-gfv-q3-2025/Mazda2 Retail3.png',
         alt: 'Mazda2',
         width: 1080,
         height: 1920
       },
       {
         type: 'video',
-        src: '/assets/campaigns/mazda-gfv-q3-2025/mazda2-story-video-1080x1920.mp4',
-        poster: '/assets/campaigns/mazda-gfv-q3-2025/Mazda2.jpg',
+        src: '/assets/documents/mazda-gfv-q3-2025/mazda2-story-video-1080x1920.mp4',
+        poster: '/assets/documents/mazda-gfv-q3-2025/Mazda2.jpg',
         alt: 'Mazda2 Story Video',
         width: 1080,
         height: 1920
@@ -213,22 +213,22 @@ export const campaigns: Campaign[] = [
     assets: [
       {
         type: 'video',
-        src: '/assets/campaigns/sasol-green-future-2024/MazdaCare 1.mp4',
-        poster: '/assets/campaigns/sasol-green-future-2024/MazdaCare.png',
+        src: '/assets/documents/sasol-green-future-2024/MazdaCare 1.mp4',
+        poster: '/assets/documents/sasol-green-future-2024/MazdaCare.png',
         alt: 'MazdaCare Warranty Stories',
         width: 1080,
         height: 1920
       },
       {
         type: 'video',
-        src: '/assets/campaigns/sasol-green-future-2024/MazdaCare2.mp4',
+        src: '/assets/documents/sasol-green-future-2024/MazdaCare2.mp4',
         alt: 'Design & craft feature cut',
         width: 1080,
         height: 1920
       },
       {
         type: 'video',
-        src: '/assets/campaigns/sasol-green-future-2024/MazdaCare3.mp4',
+        src: '/assets/documents/sasol-green-future-2024/MazdaCare3.mp4',
         alt: 'Joy of driving feature cut',
         width: 1080,
         height: 1920
@@ -256,7 +256,7 @@ export const campaigns: Campaign[] = [
     ]
   },
   {
-    id: 'south32',
+    id: 'south32-community-2024',
     title: 'South32 Hillside Campaign Series',
     employer: 'South32',
     role: 'Marketing & Alumni Lead',
@@ -272,40 +272,40 @@ export const campaigns: Campaign[] = [
     assets: [
       {
         type: 'video',
-        src: '/assets/campaigns/empangeni-open-day-2023/insta_video_76990.MP4',
-        poster: '/assets/campaigns/empangeni-open-day-2023/South32 Cover.JPG',
+        src: '/assets/documents/south32-community-2024/insta_video_76990.MP4',
+        poster: '/assets/documents/south32-community-2024/South32 Cover.JPG',
         alt: 'South32 Cover.jpg',
         width: 1080,
         height: 1920
       },
       {
         type: 'image',
-        src: '/assets/campaigns/empangeni-open-day-2023/South 1.jpg',
-        poster: '/assets/campaigns/empangeni-open-day-2023/South32 Cover.JPG',
+        src: '/assets/documents/south32-community-2024/South 1.jpg',
+        poster: '/assets/documents/south32-community-2024/South32 Cover.JPG',
         alt: 'South32 Cover.jpg',
         width: 1080,
         height: 1080
       },
       {
         type: 'image',
-        src: '/assets/campaigns/empangeni-open-day-2023/South 2.jpg',
-        poster: '/assets/campaigns/empangeni-open-day-2023/South32 Cover.JPG',
+        src: '/assets/documents/south32-community-2024/South 2.jpg',
+        poster: '/assets/documents/south32-community-2024/South32 Cover.JPG',
         alt: 'High School Leadership Programme Group Shot',
         width: 1080,
         height: 1920
       },
       {
         type: 'image',
-        src: '/assets/campaigns/empangeni-open-day-2023/South 3.jpg',
-        poster: '/assets/campaigns/empangeni-open-day-2023/South32 Cover.JPG',
+        src: '/assets/documents/south32-community-2024/South 3.jpg',
+        poster: '/assets/documents/south32-community-2024/South32 Cover.JPG',
         alt: 'Campaign Poster Visuals',
         width: 1080,
         height: 1920
       },
       {
         type: 'image',
-        src: '/assets/campaigns/empangeni-open-day-2023/South 4.jpg',
-        poster: '/assets/campaigns/empangeni-open-day-2023/South32 Cover.JPG',
+        src: '/assets/documents/south32-community-2024/South 4.jpg',
+        poster: '/assets/documents/south32-community-2024/South32 Cover.JPG',
         alt: "Trek4Mandela Women's Month Spotlight Series",
         width: 1080,
         height: 1920
@@ -321,7 +321,7 @@ export const campaigns: Campaign[] = [
     tech: ['Adobe Illustrator', 'Photoshop', 'Canva Pro', 'Microsoft SharePoint', 'Outlook Comms Planner']
   },
   {
-    id: 'initium-venture-solutions-portfolio',
+    id: 'initium-b2b-acceleration-2025',
     title: 'Initium Venture Solutions - Integrated Marketing Campaign',
     employer: 'Initium Venture Solutions',
     role: 'Marketing & Brand Strategist',
@@ -341,64 +341,64 @@ export const campaigns: Campaign[] = [
     assets: [
       {
         type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS1.jpg',
-        poster: '/assets/campaigns/initium-b2b-acceleration-2025/IVS Poster.jpg',
+        src: '/assets/documents/initium-b2b-acceleration-2025/IVS1.jpg',
+        poster: '/assets/documents/initium-b2b-acceleration-2025/IVS Poster.jpg',
         alt: 'Initium Venture Solutions qualification series - ICT, Transport & Logistics, and Business',
         width: 3375,
         height: 6000
       },
       {
         type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS2.jpg',
+        src: '/assets/documents/initium-b2b-acceleration-2025/IVS2.jpg',
         alt: 'IVS file properties showing high-resolution marketing asset',
         width: 1440,
         height: 1440
       },
       {
         type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS3.jpg',
+        src: '/assets/documents/initium-b2b-acceleration-2025/IVS3.jpg',
         alt: 'IVS Company Prospectus - comprehensive brand collateral',
         width: 1440,
         height: 2880
       },
       {
         type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS4.jpg',
+        src: '/assets/documents/initium-b2b-acceleration-2025/IVS4.jpg',
         alt: 'Social media ad campaign series for Transport, ICT, and Business qualifications',
         width: 1440,
         height: 2880
       },
       {
         type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS5.jpg',
+        src: '/assets/documents/initium-b2b-acceleration-2025/IVS5.jpg',
         alt: 'IVS company brochure showcasing accreditation partners and training solutions',
         width: 1440,
         height: 2880
       },
       {
         type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS6.jpg',
+        src: '/assets/documents/initium-b2b-acceleration-2025/IVS6.jpg',
         alt: 'SharePoint intranet layout conceptualization and design',
         width: 1440,
         height: 2880
       },
       {
         type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS7.jpg',
+        src: '/assets/documents/initium-b2b-acceleration-2025/IVS7.jpg',
         alt: 'LinkedIn carousel ad campaign following best-practice engagement guidelines',
         width: 1440,
         height: 2880
       },
       {
         type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS8.jpg',
+        src: '/assets/documents/initium-b2b-acceleration-2025/IVS8.jpg',
         alt: 'CEO executive positioning on The Penuel Show - brand advocacy and PR',
         width: 1440,
         height: 2880
       },
       {
         type: 'image',
-        src: '/assets/campaigns/initium-b2b-acceleration-2025/IVS9.jpg',
+        src: '/assets/documents/initium-b2b-acceleration-2025/IVS9.jpg',
         alt: 'Graphic design and content creation - posters and promotional materials',
         width: 1440,
         height: 2880
@@ -427,7 +427,7 @@ export const campaigns: Campaign[] = [
     ]
   },
   {
-    id: 'sasol-communications-2024',
+    id: 'sasol-green-future-2024',
     title: 'Sasol Strategic Communications & Stakeholder Engagement',
     employer: 'Sasol',
     role: 'Communications Officer',
@@ -446,24 +446,24 @@ export const campaigns: Campaign[] = [
     assets: [
       {
         type: 'image',
-        src: '/assets/campaigns/south32-community-2024/Sasol1.jpg',
-        poster: '/assets/campaigns/south32-community-2024/sasol-image.jpg',
+        src: '/assets/documents/sasol-green-future-2024/Sasol1.jpg',
+        poster: '/assets/documents/sasol-green-future-2024/sasol-image.jpg',
         alt: 'Community upliftment campaign creative',
         width: 1024,
         height: 683
       },
       {
         type: 'image',
-        src: '/assets/campaigns/south32-community-2024/Sasol2.jpg',
-        poster: '/assets/campaigns/south32-community-2024/sasol-image.jpg',
+        src: '/assets/documents/sasol-green-future-2024/Sasol2.jpg',
+        poster: '/assets/documents/sasol-green-future-2024/sasol-image.jpg',
         alt: 'Community upliftment campaign creative',
         width: 1080,
         height: 1080
       },
       {
         type: 'image',
-        src: '/assets/campaigns/south32-community-2024/Sasol3.jpg',
-        poster: '/assets/campaigns/south32-community-2024/sasol-image.jpg',
+        src: '/assets/documents/sasol-green-future-2024/Sasol3.jpg',
+        poster: '/assets/documents/sasol-green-future-2024/sasol-image.jpg',
         alt: 'Community upliftment campaign creative',
         width: 1080,
         height: 1080
