@@ -1,71 +1,55 @@
 'use client';
-
-import React, { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { projects } from '@/lib/data';
-import { PortfolioItem } from '@/components/sections/portfolio-item';
+import { PortfolioItem } from './portfolio-item';
 
 export function Projects() {
-  const categories = useMemo(
-    () => ['All', ...Array.from(new Set(projects.map((project) => project.category)))],
-    [],
-  );
+  const [activeFilter, setActiveFilter] = useState('All');
 
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const filteredProjects =
+    activeFilter === 'All'
+      ? projects
+      : projects.filter(
+          (p) =>
+            p.category.includes(activeFilter) ||
+            (activeFilter === 'Marketing' && (p.category === 'Strategy'))
+        );
 
-  const filteredProjects = useMemo(
-    () =>
-      activeCategory === 'All'
-        ? projects
-        : projects.filter((project) => project.category === activeCategory),
-    [activeCategory],
-  );
+  const filters = ['All', 'Marketing', 'Data Science', 'Development'];
 
   return (
-    <section
-      id="work"
-      className="relative overflow-hidden bg-gradient-to-b from-[#f9fafb] to-[#ffffff] py-24 sm:py-32"
-    >
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl space-y-6 pb-12">
-          <span className="inline-flex items-center rounded-full border border-[#fed7aa] bg-[#fff7ed] px-4 py-1 text-xs font-semibold uppercase tracking-[0.4em] text-[#c2410c]">
-            Work
-          </span>
-          <h2 className="text-4xl font-semibold tracking-tight text-[#111827] sm:text-5xl">
-            Featured Projects
-          </h2>
-          <p className="max-w-2xl text-base leading-relaxed text-[#4b5563] sm:text-lg">
-            Browse a selection of campaigns, builds, and strategic initiatives organized by focus area. Use the filters to jump
-            to the work that interests you most.
-          </p>
+    <section id="work" className="py-24 bg-white">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <div>
+            <span className="text-primary font-bold tracking-widest text-xs uppercase">
+              Portfolio
+            </span>
+            <h2 className="text-4xl md:text-5xl font-light mt-4 text-black">
+              Featured Projects
+            </h2>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            {filters.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                className={`px-6 py-2 rounded-full border transition-all text-sm font-medium ${
+                  activeFilter === cat
+                    ? 'bg-black text-white border-black'
+                    : 'border-gray-200 text-gray-500 hover:border-black hover:text-black'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="mb-10 flex flex-wrap gap-3">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`rounded-full border px-4 py-2 text-sm font-medium transition-all ${
-                activeCategory === category
-                  ? 'border-black bg-black text-white shadow'
-                  : 'border-gray-200 bg-white text-gray-700 hover:border-black hover:text-black'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
-            <PortfolioItem
-              key={project.id}
-              title={project.title}
-              category={project.category}
-              tech={project.tech}
-              image={project.image}
-              description={project.description}
-              imageHint={project.imageHint}
-            />
+            <PortfolioItem key={project.id} {...project} />
           ))}
         </div>
       </div>
