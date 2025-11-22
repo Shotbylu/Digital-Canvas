@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 type PortfolioItemProps = {
   title: string;
@@ -18,37 +20,32 @@ export function PortfolioItem({
   imageHint
 }: PortfolioItemProps) {
   return (
-    <div className="group relative overflow-hidden cursor-pointer border border-transparent hover:border-zinc-800/10 transition-all h-full flex flex-col rounded-md">
-      <div className="aspect-[16/10] w-full overflow-hidden bg-gray-200">
+    <div className="bg-white rounded-lg shadow-md overflow-hidden group flex flex-col h-full border border-gray-200/80">
+      <div className="aspect-[16/10] w-full overflow-hidden bg-gray-200 relative">
         <Image
           src={image}
           alt={title}
           width={800}
           height={500}
-          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 group-hover:brightness-100"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
           data-ai-hint={imageHint}
         />
+        <div className="absolute top-4 left-4">
+          <span className="bg-black/50 text-white text-[10px] uppercase font-bold tracking-wider px-3 py-1.5 rounded-sm backdrop-blur-sm">
+            {category}
+          </span>
+        </div>
       </div>
-      <div className="absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-end p-8">
-        <span className="text-primary text-xs font-bold tracking-widest uppercase mb-2">
-          {category}
-        </span>
-        <h3 className="text-white text-2xl font-light tracking-tight mb-2">
-          {title}
-        </h3>
-        <p className="text-gray-300 text-xs mb-4 line-clamp-3">
+      <div className="p-6 flex flex-col flex-grow">
+        <h3 className="text-lg font-bold text-black mb-2">{title}</h3>
+        <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
           {description}
         </p>
-        <div className="flex gap-2 flex-wrap">
-          {tech.map((t, i) => (
-            <span
-              key={i}
-              className="text-xs text-white border border-white/30 px-2 py-1 rounded-sm"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
+        <Button asChild variant="outline" className="w-full mt-auto border-gray-300 hover:bg-black hover:text-white hover:border-black">
+            <a href="#">
+                View Case Study
+            </a>
+        </Button>
       </div>
     </div>
   );

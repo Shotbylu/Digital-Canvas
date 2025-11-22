@@ -47,9 +47,9 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
-            <PortfolioItem key={project.id} {...project} image={project.image || ''} />
+            <PortfolioItem key={project.id} {...project} />
           ))}
         </div>
       </div>
