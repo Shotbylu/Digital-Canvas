@@ -127,7 +127,7 @@ export const education: {
     date: '2018',
     title: 'Matric Senior Certificate',
     institution: 'Richards Bay Secondary (NQF4)',
-    borderColor: 'border-foreground',
+    borderColor: 'border-black',
   },
 ];
 

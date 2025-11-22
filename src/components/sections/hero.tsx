@@ -19,7 +19,7 @@ export function Hero() {
           data-ai-hint={heroBg.imageHint}
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black z-0"></div>
 
       <div className="relative z-10 container mx-auto px-6 pt-20">
         <div className="flex flex-col md:flex-row gap-12 items-center">

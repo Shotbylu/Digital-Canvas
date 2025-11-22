@@ -18,13 +18,13 @@ export function PortfolioItem({
   imageHint
 }: PortfolioItemProps) {
   return (
-    <div className="group relative overflow-hidden cursor-pointer border border-transparent hover:border-border transition-all h-full flex flex-col rounded-md">
-      <div className="aspect-[16/10] w-full overflow-hidden bg-muted">
+    <div className="group relative overflow-hidden cursor-pointer border border-transparent hover:border-zinc-800/10 transition-all h-full flex flex-col rounded-md">
+      <div className="aspect-[16/10] w-full overflow-hidden bg-gray-200">
         <Image
           src={image}
           alt={title}
           width={800}
-          height={640}
+          height={500}
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-95 group-hover:brightness-100"
           data-ai-hint={imageHint}
         />

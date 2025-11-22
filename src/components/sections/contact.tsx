@@ -1,8 +1,7 @@
-
 'use client';
 
-import { useState, useEffect, useTransition, useRef } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useRef } from 'react';
+import { useFormState } from 'react-dom';
 import {
   Github,
   Instagram,
@@ -24,23 +23,14 @@ import {
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { suggestRelevantProjects } from '@/ai/flows/dynamic-project-recommendations';
-import { projects } from '@/lib/data';
-import { useDebounce } from '@/hooks/use-debounce';
-import Link from 'next/link';
-import Image from 'next/image';
-
-type Project = (typeof projects)[0];
 
 function SubmitButton() {
-  const { pending } = useFormStatus();
   return (
     <Button
       type="submit"
-      className="w-full bg-foreground text-background py-4 font-bold tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors mt-4"
-      disabled={pending}
+      className="w-full bg-black text-white py-4 font-bold tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors mt-4"
     >
-      {pending ? 'SENDING...' : 'SEND MESSAGE'}
+      SEND MESSAGE
     </Button>
   );
 }
@@ -52,49 +42,21 @@ export function Contact() {
   const initialState: ContactFormState = { success: false, message: '' };
   const [state, formAction] = useFormState(submitContactForm, initialState);
 
-  const [message, setMessage] = useState('');
-  const debouncedMessage = useDebounce(message, 500);
-  const [recommendedProjects, setRecommendedProjects] = useState<Project[]>([]);
-  const [isAiLoading, setIsAiLoading] = useState(false);
-
-  useEffect(() => {
-    if (state.success) {
-      toast({
+  if (state.success && formRef.current) {
+    toast({
         title: 'Success!',
         description: state.message,
-      });
-      formRef.current?.reset();
-      setMessage('');
-      setRecommendedProjects([]);
-    } else if (state.message && state.errors) {
-       // Combine all error messages for the toast
-      const errorMessages = Object.values(state.errors).flat().join(' ');
-      toast({
+    });
+    formRef.current?.reset();
+  } else if (state.message && state.errors) {
+    const errorMessages = Object.values(state.errors).flat().join(' ');
+    toast({
         variant: 'destructive',
         title: 'Error',
         description: errorMessages || state.message,
-      });
-    }
-  }, [state, toast]);
+    });
+  }
 
-  useEffect(() => {
-    if (debouncedMessage.length > 20) {
-      setIsAiLoading(true);
-      suggestRelevantProjects({
-        message: debouncedMessage,
-        projects: projects.map(p => ({...p, image: p.image || ""}))
-      })
-        .then(recommendations => {
-            const recommendedIds = recommendations.map(r => r.id);
-            const fullProjectDetails = projects.filter(p => recommendedIds.includes(p.id));
-            setRecommendedProjects(fullProjectDetails);
-        })
-        .catch(err => console.error("Error fetching recommendations:", err))
-        .finally(() => setIsAiLoading(false));
-    } else {
-        setRecommendedProjects([]);
-    }
-  }, [debouncedMessage]);
 
   return (
     <section id="contact" className="py-24 bg-zinc-900 text-white">
@@ -179,7 +141,7 @@ export function Contact() {
                   id="name"
                   name="name"
                   required
-                  className="w-full border-0 border-b border-gray-200 py-3 focus-visible:ring-0 focus:border-primary transition-colors bg-transparent rounded-none"
+                  className="w-full border-0 border-b border-gray-200 py-3 focus:outline-none focus:border-primary transition-colors bg-transparent rounded-none"
                   placeholder="Your Full Name"
                 />
                  {state.errors?.name && <p className="text-sm text-red-500 mt-1">{state.errors.name[0]}</p>}
@@ -196,7 +158,7 @@ export function Contact() {
                   id="email"
                   name="email"
                   required
-                  className="w-full border-0 border-b border-gray-200 py-3 focus-visible:ring-0 focus:border-primary transition-colors bg-transparent rounded-none"
+                  className="w-full border-0 border-b border-gray-200 py-3 focus:outline-none focus:border-primary transition-colors bg-transparent rounded-none"
                   placeholder="name@company.co.za"
                 />
                  {state.errors?.email && <p className="text-sm text-red-500 mt-1">{state.errors.email[0]}</p>}
@@ -209,7 +171,7 @@ export function Contact() {
                   Subject
                 </Label>
                 <Select name="subject" defaultValue="General Inquiry">
-                    <SelectTrigger className="w-full border-0 border-b border-gray-200 py-3 focus:ring-0 focus:border-primary transition-colors bg-transparent rounded-none">
+                    <SelectTrigger className="w-full border-0 border-b border-gray-200 py-3 focus:outline-none focus:border-primary transition-colors bg-transparent rounded-none">
                         <SelectValue placeholder="Select a subject" />
                     </SelectTrigger>
                     <SelectContent>
@@ -231,9 +193,8 @@ export function Contact() {
                   id="message"
                   name="message"
                   rows={4}
-                  className="w-full border-0 border-b border-gray-200 py-3 focus-visible:ring-0 focus:border-primary transition-colors bg-transparent rounded-none resize-none"
+                  className="w-full border-0 border-b border-gray-200 py-3 focus:outline-none focus:border-primary transition-colors bg-transparent rounded-none resize-none"
                   placeholder="Tell me about your project..."
-                  onChange={(e) => setMessage(e.target.value)}
                 />
                  {state.errors?.message && <p className="text-sm text-red-500 mt-1">{state.errors.message[0]}</p>}
               </div>
@@ -252,34 +213,8 @@ export function Contact() {
                     {state.errors?.popia && <p className="text-sm text-red-500">{state.errors.popia[0]}</p>}
                 </div>
               </div>
-
               <SubmitButton />
             </form>
-            
-            {(isAiLoading || recommendedProjects.length > 0) && (
-              <div className="mt-8 pt-8 border-t border-gray-200">
-                <h4 className="text-lg font-bold text-gray-800 mb-4">Based on your message, you might be interested in:</h4>
-                {isAiLoading && <p className="text-sm text-gray-500">Analyzing your request...</p>}
-                <div className="space-y-4">
-                  {recommendedProjects.map(project => (
-                    <Link href="#work" key={project.id} className="flex items-center gap-4 group p-2 rounded-md hover:bg-gray-100 transition-colors">
-                      <Image 
-                        src={project.image}
-                        alt={project.title}
-                        width={80}
-                        height={64}
-                        className="rounded-md object-cover aspect-[5/4]"
-                        data-ai-hint={project.imageHint}
-                      />
-                      <div>
-                        <p className="font-semibold text-gray-800 group-hover:text-primary transition-colors">{project.title}</p>
-                        <p className="text-xs text-gray-500">{project.category}</p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>

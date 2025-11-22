@@ -55,7 +55,8 @@ export function Header() {
             ))}
             <Button asChild variant={scrolled ? 'default' : 'outline'} className={cn(
                 'font-semibold px-6 py-2',
-                !scrolled && 'border-white text-white hover:bg-white hover:text-black'
+                 scrolled ? 'border-black hover:bg-black hover:text-white' : 'border-white text-white hover:bg-white hover:text-black',
+                 !scrolled && 'text-white'
             )}>
               <a href="#contact">Let&apos;s Talk</a>
             </Button>

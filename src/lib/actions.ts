@@ -7,7 +7,7 @@ const contactFormSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
   subject: z.string(),
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-  popia: z.boolean().refine(val => val === true, {
+  popia: z.string().refine(val => val === "on", {
     message: "You must accept the POPIA consent to proceed.",
   }),
 });
@@ -25,11 +25,7 @@ export async function submitContactForm(
   formData: FormData
 ): Promise<ContactFormState> {
   
-  const data = Object.fromEntries(formData.entries());
-  const parsed = contactFormSchema.safeParse({
-    ...data,
-    popia: data.popia === "on"
-  });
+  const parsed = contactFormSchema.safeParse(Object.fromEntries(formData.entries()));
 
   if (!parsed.success) {
     return {
