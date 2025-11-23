@@ -82,7 +82,7 @@ export const campaigns: Campaign[] = [
       'Plan and execute full-funnel campaigns across Meta, YouTube, CRM, and Web',
       'Optimise daily and report across Meta, Google, GA4, Rival IQ, and Power BI',
       'Manage POPIA-compliant lead flows and dealer alignment via HubSpot',
-      'Oversee community engagement and sentiment across Mazda's social channels',
+      'Oversee community engagement and sentiment across Mazda\'s social channels',
       'Coordinate influencer/PR content, approvals, scheduling, and performance',
       'Manage budgets, POs, invoices, and reconciliations in Oracle E-Business Suite',
       'Maintain Mazda SA website, SharePoint content, and dealer portal updates',
