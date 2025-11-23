@@ -22,8 +22,8 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black z-0"></div>
 
       <div className="relative z-10 container mx-auto px-4 pt-28 pb-16 sm:px-6 lg:px-20 lg:pt-32">
-        <div className="flex flex-col items-start gap-12 lg:flex-row lg:items-center">
-          <div className="w-full lg:w-2/3 text-left">
+        <div className="flex flex-col items-start gap-12 lg:flex lg:flex-row-reverse lg:items-center">
+          <div className="w-full text-left lg:w-2/3">
             <span className="text-primary font-bold tracking-[0.3em] text-xs uppercase animate-pulse">
               JHB • Digital Marketing Specialist
             </span>
@@ -41,11 +41,11 @@ export function Hero() {
               run ads, I engineer ROI.
             </p>
 
-            <div className="flex w-full flex-col items-stretch space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+            <div className="flex w-full flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
               <Button
                 asChild
                 size="lg"
-                className="w-full flex-1 bg-white text-black font-bold transition-colors hover:bg-primary"
+                className="w-full flex-1 min-h-[44px] bg-white text-black font-bold transition-colors hover:bg-primary"
               >
                 <a href="#work">
                   View Case Studies <ArrowRight size={18} />
@@ -55,7 +55,7 @@ export function Hero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="w-full flex-1 rounded-lg border-2 border-white bg-white/5 text-white font-semibold shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-sm transition-colors hover:bg-white/15"
+                className="w-full flex-1 min-h-[44px] rounded-lg border-2 border-white bg-white/5 text-white font-semibold shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-sm transition-colors hover:bg-white/15"
               >
                 <a href="#">
                   <Download size={18} /> Download CV
@@ -64,7 +64,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative w-full lg:w-1/3">
+          <div className="relative flex w-full justify-center lg:block lg:w-1/3">
             <div className="mx-auto w-full max-w-sm overflow-hidden border-2 border-zinc-700 bg-zinc-800 grayscale transition-all duration-700 hover:grayscale-0 lg:ml-auto">
               <div className="aspect-[3/4] w-full">
                 <Image
