@@ -75,8 +75,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
 
   const assets = campaign?.assets ?? [];
   const assetsLength = assets.length;
-  const hasAssets = assetsLength > 0;
-  const activeAsset = hasAssets ? assets[currentIndex] : undefined;
+  const activeAsset = assets[currentIndex];
   const isVideoPlaceholder = activeAsset?.type === 'video' && activeAsset.src.endsWith('.txt');
 
   const analyticsContext = useMemo(
@@ -192,70 +191,59 @@ const VideoModal: React.FC<VideoModalProps> = ({
 
             <div className="flex flex-col gap-4 lg:col-span-7">
               <div ref={assetContainerRef} className="aspect-video w-full overflow-hidden rounded-2xl bg-[#111827] shadow-xl">
-                {hasAssets ? (
-                  <AnimatePresence mode="wait">
-                    {activeAsset && (
-                      <motion.div
-                        key={`${campaign.id}-${currentIndex}`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="relative h-full w-full"
-                      >
-                        {activeAsset.type === 'video' ? (
-                          assetVisible && !videoError && !isVideoPlaceholder ? (
-                            <video
-                              key={activeAsset.src}
-                              className="h-full w-full object-cover"
-                              controls
-                              autoPlay
-                              muted
-                              playsInline
-                              preload="none"
-                              poster={activeAsset.poster}
-                              onError={() => setVideoError(true)}
-                            >
-                              <source src={activeAsset.src} type="video/mp4" />
-                            </video>
-                          ) : (
-                            <div className="relative flex h-full w-full items-center justify-center bg-[#111827] text-center text-[rgba(255,255,255,0.8)]">
-                              <img
-                                src={activeAsset.poster ?? activeAsset.src}
-                                alt={activeAsset.alt}
-                                loading="lazy"
-                                className="absolute inset-0 h-full w-full object-cover opacity-40"
-                              />
-                              <div className="relative mx-6 rounded-2xl bg-black/60 px-4 py-3 text-sm">
-                                <p className="font-medium">Video preview unavailable in this workspace.</p>
-                                <p>
-                                  Replace the placeholder file in <code>public/assets/campaigns/{campaign.id}</code> with a
-                                  1080×1920 MP4 and update the dataset.
-                                </p>
-                              </div>
-                            </div>
-                          )
-                        ) : (
-                          <img
-                            src={activeAsset.src}
-                            alt={activeAsset.alt}
-                            loading="lazy"
+                <AnimatePresence mode="wait">
+                  {activeAsset && (
+                    <motion.div
+                      key={`${campaign.id}-${currentIndex}`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="relative h-full w-full"
+                    >
+                      {activeAsset.type === 'video' ? (
+                        assetVisible && !videoError && !isVideoPlaceholder ? (
+                          <video
+                            key={activeAsset.src}
                             className="h-full w-full object-cover"
-                          />
-                        )}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center rounded-2xl border border-dashed border-white/20 bg-[#0b1222] text-center text-[rgba(255,255,255,0.8)]">
-                    <div className="px-6 py-8">
-                      <p className="font-semibold">Campaign assets are still being prepared.</p>
-                      <p className="mt-2 text-sm text-[rgba(255,255,255,0.7)]">
-                        Upload media to <code>public/assets/campaigns/{campaign.id}</code> and refresh to review them here.
-                      </p>
-                    </div>
-                  </div>
-                )}
+                            controls
+                            autoPlay
+                            muted
+                            playsInline
+                            preload="none"
+                            poster={activeAsset.poster}
+                            onError={() => setVideoError(true)}
+                          >
+                            <source src={activeAsset.src} type="video/mp4" />
+                          </video>
+                        ) : (
+                          <div className="relative flex h-full w-full items-center justify-center bg-[#111827] text-center text-[rgba(255,255,255,0.8)]">
+                            <img
+                              src={activeAsset.poster ?? activeAsset.src}
+                              alt={activeAsset.alt}
+                              loading="lazy"
+                              className="absolute inset-0 h-full w-full object-cover opacity-40"
+                            />
+                            <div className="relative mx-6 rounded-2xl bg-black/60 px-4 py-3 text-sm">
+                              <p className="font-medium">Video preview unavailable in this workspace.</p>
+                              <p>
+                                Replace the placeholder file in <code>public/assets/campaigns/{campaign.id}</code> with a
+                                1080×1920 MP4 and update the dataset.
+                              </p>
+                            </div>
+                          </div>
+                        )
+                      ) : (
+                        <img
+                          src={activeAsset.src}
+                          alt={activeAsset.alt}
+                          loading="lazy"
+                          className="h-full w-full object-cover"
+                        />
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
                 {hasMultipleAssets && (
                   <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-2">
