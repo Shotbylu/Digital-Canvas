@@ -1,6 +1,8 @@
+import { Suspense } from 'react';
 import { Header } from '@/components/sections/header';
 import { Hero } from '@/components/sections/hero';
 import { Stats } from '@/components/sections/stats';
+import { PortfolioAssistant } from '@/components/ui/portfolio-assistant';
 import { Projects } from '@/components/sections/projects';
 import { Methodology } from '@/components/sections/methodology';
 import { Experience } from '@/components/sections/experience';
@@ -14,7 +16,10 @@ export default function Home() {
       <main>
         <Hero />
         <Stats />
-        <Projects />
+        <PortfolioAssistant />
+        <Suspense fallback={<div className="py-20 text-center">Loading Projects...</div>}>
+          <Projects />
+        </Suspense>
         <Methodology />
         <Experience />
         <Contact />

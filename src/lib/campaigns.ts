@@ -54,6 +54,7 @@ export interface Campaign {
   externalUrl?: string;
   industries?: string[];
   highlights?: string[];
+  layoutSize?: 'tall' | 'wide' | 'square';
 }
 
 export const campaigns: Campaign[] = [
@@ -64,6 +65,7 @@ export const campaigns: Campaign[] = [
     role: 'Digital Marketing Specialist',
     period: '2025',
     channels: ['Meta', 'YouTube', 'Email/CRM', 'Web'],
+    layoutSize: 'tall',
     summary:
       "Driving Mazda SA’s digital performance through full-funnel campaign strategy, video-led creative direction, daily optimisation, data analytics, and CRM-driven lead generation.",
     responsibilities: [
@@ -142,6 +144,7 @@ export const campaigns: Campaign[] = [
     role: 'Digital Marketing Specialist',
     period: '2025 Q3',
     channels: ['Meta', 'Google', 'Web'],
+    layoutSize: 'tall',
     summary:
       'Mazda2 Retail promotion campaign aimed at driving sales and increasing brand consideration among active car buyers. Live across our website, Google Media and Meta.',
     responsibilities: [
@@ -200,6 +203,7 @@ export const campaigns: Campaign[] = [
     role: 'Digital Marketing Specialist',
     period: '2025',
     channels: ['Meta', 'Google', 'Web', 'TikTok', 'YouTube'],
+    layoutSize: 'tall',
     summary:
       "A digital campaign showcasing MazdaCare’s service plan, warranty and roadside assistance, boosting ownership confidence and value. Live across Meta, Web, YouTube and TikTok platforms.",
     responsibilities: [
@@ -263,6 +267,7 @@ export const campaigns: Campaign[] = [
     role: 'Marketing & Alumni Lead',
     period: '2022',
     channels: ['LinkedIn', 'Web'],
+    layoutSize: 'square',
     summary:
       "A series of internal and community-facing campaigns covering wellness, education, visual storytelling and women's month advocacy. Campaigns showcased real employee stories, leadership development and community empowerment.",
     responsibilities: [
@@ -328,6 +333,7 @@ export const campaigns: Campaign[] = [
     role: 'Marketing & Brand Strategist',
     period: '2024-2025',
     channels: ['LinkedIn', 'Social Media', 'Print', 'Digital Advertising', 'Public Relations'],
+    layoutSize: 'tall',
     summary:
       'Comprehensive brand development and multi-channel marketing campaign for B-BBEE Level 1 training provider, delivering industry-recognized ICT, Business, and Transport & Logistics qualifications.',
     responsibilities: [
@@ -420,6 +426,7 @@ export const campaigns: Campaign[] = [
     role: 'Communications Officer',
     period: '2024',
     channels: ['Internal Comms', 'Media Relations', 'Stakeholder Engagement', 'Digital Platforms'],
+    layoutSize: 'wide',
     summary:
       'Strategic corporate communications driving stakeholder alignment, reputation management, and operational messaging across integrated energy and chemical operations.',
     responsibilities: [

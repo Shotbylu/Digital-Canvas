@@ -3,8 +3,14 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Digital Canvas',
-  description: 'Portfolio of Lungelo Sibisi, a Digital Marketing Specialist.',
+  title: 'Lungelo Sibisi | Digital Marketing Specialist',
+  description: 'Portfolio of Lungelo Sibisi, a Digital Marketing Specialist specializing in SEO, paid social, and data-driven campaigns.',
+  openGraph: {
+    title: 'Lungelo Sibisi | Digital Marketing Specialist',
+    description: 'Converting Ad spend into revenue. Explore my portfolio of high-impact digital campaigns.',
+    type: 'website',
+    locale: 'en_ZA',
+  },
 };
 
 export default function RootLayout({

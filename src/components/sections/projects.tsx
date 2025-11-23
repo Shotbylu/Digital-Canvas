@@ -34,7 +34,7 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {campaignData.map((campaign) => (
             <CampaignCard key={campaign.id} campaign={campaign} onOpen={openCampaignModal} />
           ))}

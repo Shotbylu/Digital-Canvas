@@ -103,9 +103,11 @@ const VideoModal: React.FC<VideoModalProps> = ({
 
   const handleClose = useCallback(() => {
     onClose();
-    window.setTimeout(() => {
-      triggerRef.current?.focus();
-    }, 0);
+    if (triggerRef?.current) {
+      window.setTimeout(() => {
+        triggerRef.current?.focus();
+      }, 0);
+    }
   }, [onClose, triggerRef]);
 
   // Keyboard support
@@ -279,9 +281,8 @@ const VideoModal: React.FC<VideoModalProps> = ({
                       key={asset.src}
                       type="button"
                       onClick={() => setCurrentIndex(index)}
-                      className={`h-2.5 w-8 rounded-full transition ${
-                        currentIndex === index ? 'bg-[#111827]' : 'bg-[#e5e7eb] hover:bg-[#e5e7eb]'
-                      }`}
+                      className={`h-2.5 w-8 rounded-full transition ${currentIndex === index ? 'bg-[#111827]' : 'bg-[#e5e7eb] hover:bg-[#e5e7eb]'
+                        }`}
                       aria-label={`View asset ${index + 1} of ${assets.length}`}
                     />
                   ))}

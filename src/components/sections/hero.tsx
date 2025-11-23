@@ -27,7 +27,7 @@ export function Hero() {
             <span className="text-primary font-bold tracking-[0.3em] text-xs uppercase animate-pulse">
               JHB • Digital Marketing Specialist
             </span>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mt-6 mb-8 leading-[1.05] tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mt-6 mb-8 leading-[1.1] tracking-tight">
               Converting Ad spend <br />
               into{' '}
               <span className="font-light italic text-gray-300">
@@ -35,7 +35,7 @@ export function Hero() {
               </span>
               .
             </h1>
-            <p className="text-gray-400 max-w-xl text-lg mb-10 font-light leading-relaxed">
+            <p className="text-white max-w-xl text-lg mb-10 font-light leading-relaxed">
               I specialize in SEO, paid social across Meta, Google, and LinkedIn Ads.
               With experience in Automotive, Energy, and Mining, I don&apos;t just
               run ads, I engineer ROI.
