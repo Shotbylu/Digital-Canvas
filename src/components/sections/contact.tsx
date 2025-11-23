@@ -179,7 +179,7 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-zinc-900 text-white">
+    <section id="contact" className="py-24 bg-zinc-900 text-white scroll-mt-24">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16">
           <div>
