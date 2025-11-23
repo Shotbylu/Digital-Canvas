@@ -2,10 +2,10 @@ import { Globe, Database, BarChart3 } from 'lucide-react';
 
 export function Stats() {
   return (
-    <section className="py-16 bg-black border-t border-zinc-800 text-white scroll-mt-24">
+    <section className="py-16 bg-black border-t border-zinc-800 text-white">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 text-center sm:text-left divide-y sm:divide-y-0 sm:divide-x divide-zinc-800">
-          <div className="md:pl-4 pt-2 sm:pt-0">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left divide-x divide-zinc-800">
+          <div className="md:pl-4">
             <div className="text-4xl md:text-5xl font-bold text-primary">
               R350 000+
             </div>
@@ -13,7 +13,7 @@ export function Stats() {
               Managed Ad Spend
             </div>
           </div>
-          <div className="sm:pl-8 pt-2 sm:pt-0">
+          <div className="pl-8">
             <div className="text-4xl md:text-5xl font-bold text-white">
               4.2:1
             </div>
@@ -21,13 +21,13 @@ export function Stats() {
               Average ROAS
             </div>
           </div>
-          <div className="sm:pl-8 pt-2 sm:pt-0">
+          <div className="pl-8">
             <div className="text-4xl md:text-5xl font-bold text-white">R85</div>
             <div className="text-xs text-gray-500 uppercase mt-2 tracking-widest">
               Best CPL Achieved
             </div>
           </div>
-          <div className="sm:pl-8 pt-4 sm:pt-0 flex items-center justify-center lg:justify-start gap-6 text-gray-400">
+          <div className="pl-8 flex items-center justify-center md:justify-start gap-6 text-gray-400">
             <Globe
               size={32}
               className="hover:text-white transition-colors"

@@ -12,7 +12,7 @@ export function Experience() {
   const EducationIcon = timelineIcons.education;
 
   return (
-    <section id="background" className="py-24 bg-white border-t border-gray-100 scroll-mt-24">
+    <section id="background" className="py-24 bg-white border-t border-gray-100">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="mb-20">
           <div className="flex items-center gap-4 mb-12">
@@ -29,10 +29,10 @@ export function Experience() {
                 <div className="md:w-1/4 text-gray-400 text-sm font-mono pt-1">
                   {job.date}
                 </div>
-                <div className="md:w-3/4 border border-gray-100 rounded-lg bg-gray-50/60 p-6 shadow-sm transition-colors md:border-none md:bg-transparent md:shadow-none md:rounded-none md:border-l-2 md:pl-8 md:pb-8 md:pt-0 md:group-hover:border-primary">
-                  <h3 className="text-lg md:text-xl font-bold">{job.role}</h3>
-                  <p className="text-gray-500 mb-3">{job.company}</p>
-                  <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                <div className="md:w-3/4 border-l-2 border-gray-100 pl-8 pb-8 group-hover:border-primary transition-colors">
+                  <h3 className="text-xl font-bold">{job.role}</h3>
+                  <p className="text-gray-500 mb-2">{job.company}</p>
+                  <p className="text-gray-600 leading-relaxed text-sm">
                     {job.description}
                   </p>
                 </div>
