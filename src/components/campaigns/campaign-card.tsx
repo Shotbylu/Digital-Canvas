@@ -1,125 +1,131 @@
-'use client';
+import React, { useRef, useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Play } from "lucide-react";
 
-import type { KeyboardEvent, MouseEvent } from 'react';
-import Image from 'next/image';
-import { Campaign } from '@/lib/campaigns';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { ExternalLink, Play } from 'lucide-react';
+interface Asset {
+  src: string;
+  poster?: string;
+  alt: string;
+  type?: string;
+}
+
+interface Campaign {
+  title: string;
+  employer: string;
+  summary?: string;
+  assets?: Asset[];
+}
 
 interface CampaignCardProps {
   campaign: Campaign;
-  onOpen: (campaign: Campaign, assetIndex: number) => void;
+  onOpen?: (campaign: Campaign, assetIndex: number, trigger: HTMLElement) => void;
+  className?: string;
 }
 
-export function CampaignCard({ campaign, onOpen }: CampaignCardProps) {
-  const hasAssets = campaign.assets.length > 0;
-  const preview = campaign.assets[0];
-  const previewSrc =
-    preview?.type === 'video' && preview.poster ? preview.poster : preview?.src || '/assets/campaigns/IMG_1.jpg';
-  const previewAlt = preview?.alt || `${campaign.title} preview image`;
-  const previewWidth = preview?.width || 1600;
-  const previewHeight = preview?.height || 1600;
+const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onOpen, className = "" }) => {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const visibleTech = campaign.tech.slice(0, 3);
-  const remainingTech = campaign.tech.length - visibleTech.length;
+  useEffect(() => {
+    const node = cardRef.current;
+    if (!node || isVisible) return;
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          setIsVisible(true);
+          obs.unobserve(entry.target);
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.2 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [isVisible]);
 
-  const handleOpen = () => {
-    if (!hasAssets) return;
-    onOpen(campaign, 0);
-  };
+  const primaryAsset = campaign.assets?.[0];
 
-  const handleKeyDown = (event: KeyboardEvent) => {
-    if (!hasAssets) return;
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      onOpen(campaign, 0);
-    }
-  };
-
-  const handleButtonOpen = (event: MouseEvent) => {
-    event.stopPropagation();
-    handleOpen();
+  const handleOpen = (event: React.MouseEvent<HTMLElement>, assetIndex = 0) => {
+    if (!onOpen) return;
+    onOpen(campaign, assetIndex, event.currentTarget as HTMLElement);
   };
 
   return (
-    <Card className="group flex h-full flex-col overflow-hidden border-gray-200 shadow-sm transition hover:-translate-y-1 hover:shadow-md focus-within:ring-2 focus-within:ring-primary/50">
-      <div
-        role="button"
-        tabIndex={0}
-        onKeyDown={handleKeyDown}
-        onClick={handleOpen}
-        className="relative aspect-[4/5] w-full cursor-pointer overflow-hidden bg-muted outline-none"
-        aria-label={`Open case study for ${campaign.title}`}
-      >
-        <Image
-          src={previewSrc}
-          alt={previewAlt}
-          width={previewWidth}
-          height={previewHeight}
-          className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-          priority={false}
-        />
-        {preview?.type === 'video' && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-b from-black/10 via-black/20 to-black/40">
-            <span className="flex items-center gap-2 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-gray-900 shadow-sm transition group-hover:bg-white">
-              <Play className="h-4 w-4" />
-              Play preview
-            </span>
-          </div>
-        )}
-        <div className="absolute left-4 top-4 flex flex-wrap gap-2">
-          {campaign.channels.map((channel) => (
-            <Badge key={channel} variant="secondary" className="bg-white/90 text-xs font-semibold text-gray-800">
-              {channel}
-            </Badge>
-          ))}
-        </div>
-      </div>
-
-      <CardContent className="flex flex-1 flex-col gap-6 p-6">
-        <div className="space-y-3">
-          <p className="text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground">{campaign.period}</p>
-          <div className="space-y-1">
-            <h3 className="text-xl font-semibold leading-7 text-foreground">{campaign.title}</h3>
-            <p className="text-sm font-medium text-gray-800">{campaign.employer}</p>
-          </div>
-          <p className="line-clamp-3 text-sm leading-6 text-gray-600">{campaign.summary}</p>
-        </div>
-
-        <div className="mt-auto flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-          {visibleTech.map((item) => (
-            <Badge key={item} variant="outline" className="border-gray-200 text-gray-700">
-              {item}
-            </Badge>
-          ))}
-          {remainingTech > 0 && (
-            <Badge variant="secondary" className="bg-gray-100 text-gray-800">
-              +{remainingTech} more
-            </Badge>
-          )}
-        </div>
-
-        <div className="flex items-center gap-3">
-          <Button className="flex-1" onClick={handleButtonOpen} disabled={!hasAssets} aria-disabled={!hasAssets}>
-            View Case Study
-          </Button>
-          {campaign.externalUrl && (
-            <Button
-              asChild
-              variant="outline"
-              size="icon"
-              className="shrink-0"
-              aria-label={`Open ${campaign.title} in a new tab`}
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 24 }}
+      animate={isVisible ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
+      whileHover={{ y: -4 }}
+      className={`group relative rounded-2xl bg-white border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 ${className}`}
+      data-analytics="campaign-card"
+    >
+      <article className="relative flex h-full flex-col overflow-hidden rounded-2xl">
+        {/* Media Well */}
+        <div className="relative aspect-square w-full overflow-hidden bg-gray-50">
+          {primaryAsset ? (
+            <button
+              type="button"
+              onClick={(event) => handleOpen(event, 0)}
+              className="group/media relative block h-full w-full"
+              aria-label={`View ${campaign.title} media`}
+              data-analytics="campaign-card-view"
             >
-              <a href={campaign.externalUrl} target="_blank" rel="noreferrer" onClick={(event) => event.stopPropagation()}>
-                <ExternalLink className="h-4 w-4" />
-              </a>
-            </Button>
+              <img
+                src={primaryAsset.poster ?? primaryAsset.src}
+                alt={primaryAsset.alt}
+                loading="lazy"
+                width={1440}
+                height={1440}
+                sizes="(max-width: 768px) 100vw, 640px"
+                className="h-full w-full object-cover object-center transition duration-500 group-hover/media:scale-105"
+              />
+
+              {primaryAsset.type === "video" && (
+                <span className="absolute inset-0 flex items-center justify-center">
+                  <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white text-gray-900 shadow-lg transition group-hover/media:scale-110">
+                    <Play className="h-5 w-5 fill-current" />
+                  </span>
+                </span>
+              )}
+
+              {/* Employer badge */}
+              <span className="pointer-events-none absolute left-4 top-4 inline-flex items-center rounded-md bg-white/95 px-3 py-1.5 text-xs font-medium uppercase tracking-wider text-gray-700 shadow-sm">
+                {campaign.employer}
+              </span>
+            </button>
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-sm text-gray-500">
+              Media preview unavailable
+            </div>
           )}
         </div>
-      </CardContent>
-    </Card>
+
+        {/* Content */}
+        <div className="px-5 pb-5 pt-5">
+          <h3 className="text-lg font-semibold leading-tight text-gray-900">
+            {campaign.title}
+          </h3>
+          {campaign.summary && (
+            <p className="mt-2 text-sm leading-relaxed text-gray-600">{campaign.summary}</p>
+          )}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-auto px-5 pb-5">
+          <button
+            type="button"
+            onClick={(event) => handleOpen(event, 0)}
+            className="inline-flex w-full items-center justify-center rounded-full bg-gray-900 px-5 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2"
+            aria-label={`Open ${campaign.title} campaign detail`}
+            data-analytics="campaign-card-view"
+          >
+            View Case Study
+          </button>
+        </div>
+      </article>
+    </motion.div>
   );
-}
+};
+
+export default CampaignCard;
