@@ -23,7 +23,7 @@ export function Projects() {
   return (
     <section id="work" className="border-t border-gray-100 bg-white py-20 sm:py-24">
       <div className="container mx-auto px-6">
-        <div className="mx-auto mb-16 max-w-5xl space-y-4 text-center md:text-left">
+        <div className="mx-auto mb-16 max-w-5xl space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Case Studies</span>
           <div className="space-y-3">
             <h2 className="text-3xl font-semibold leading-tight text-black sm:text-4xl lg:text-5xl">Campaign Impact</h2>
