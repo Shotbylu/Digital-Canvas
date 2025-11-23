@@ -174,7 +174,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
         >
           <motion.div
             ref={modalRef}
-            className="relative flex w-full max-w-6xl flex-col gap-6 overflow-hidden rounded-3xl bg-[#111827] p-6 shadow-2xl lg:flex-row"
+            className="relative w-full max-w-6xl overflow-hidden rounded-3xl bg-[#111827] p-4 shadow-2xl sm:p-8 lg:grid lg:grid-cols-12 lg:gap-8"
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
@@ -189,11 +189,8 @@ const VideoModal: React.FC<VideoModalProps> = ({
               <X className="h-5 w-5" />
             </button>
 
-            <div className="flex flex-col gap-4 lg:w-1/2">
-              <div
-                ref={assetContainerRef}
-                className="relative w-full overflow-hidden rounded-2xl bg-[#111827] shadow-xl aspect-[9/16]"
-              >
+            <div className="flex flex-col gap-4 lg:col-span-7">
+              <div ref={assetContainerRef} className="aspect-video w-full overflow-hidden rounded-2xl bg-[#111827] shadow-xl">
                 <AnimatePresence mode="wait">
                   {activeAsset && (
                     <motion.div
@@ -279,8 +276,10 @@ const VideoModal: React.FC<VideoModalProps> = ({
                       key={asset.src}
                       type="button"
                       onClick={() => setCurrentIndex(index)}
-                      className={`h-2.5 w-8 rounded-full transition ${
-                        currentIndex === index ? 'bg-[#111827]' : 'bg-[#e5e7eb] hover:bg-[#e5e7eb]'
+                      className={`h-2.5 w-2.5 rounded-full transition ${
+                        currentIndex === index
+                          ? 'bg-[#f97316] shadow-[0_0_0_2px_rgba(255,255,255,0.6)]'
+                          : 'bg-[#e5e7eb] hover:bg-[#d1d5db]'
                       }`}
                       aria-label={`View asset ${index + 1} of ${assets.length}`}
                     />
@@ -289,7 +288,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
               )}
             </div>
 
-            <div className="flex flex-1 flex-col gap-6 overflow-y-auto pr-2">
+            <div className="flex flex-col gap-6 overflow-y-auto pt-4 lg:col-span-5 lg:pt-0">
               <div>
                 <span className="inline-flex items-center rounded-full border border-[#fed7aa] bg-[#fff7ed] px-3 py-1 text-xs font-semibold text-[#c2410c]">
                   {campaign.employer}
@@ -308,12 +307,9 @@ const VideoModal: React.FC<VideoModalProps> = ({
 
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-[rgba(255,255,255,0.7)]">Responsibilities</h3>
-                <ul className="mt-2 space-y-2 text-sm text-[rgba(255,255,255,0.7)]">
+                <ul className="mt-2 ml-5 list-disc space-y-2 text-sm text-[rgba(255,255,255,0.7)]">
                   {campaign.responsibilities.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span aria-hidden="true" className="text-[#f97316]">•</span>
-                      <span>{item}</span>
-                    </li>
+                    <li key={item}>{item}</li>
                   ))}
                 </ul>
               </div>
@@ -331,7 +327,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
 
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-[rgba(255,255,255,0.7)]">Key Results</h3>
-                <div className="mt-3 flex gap-2 overflow-x-auto pb-2 whitespace-nowrap sm:grid sm:grid-cols-2 sm:gap-2 sm:overflow-visible sm:whitespace-normal">
+                <div className="mt-3 flex flex-wrap gap-2 py-2">
                   {campaign.kpis.map((kpi) => (
                     <span
                       key={kpi.label}
