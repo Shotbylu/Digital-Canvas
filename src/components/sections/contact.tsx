@@ -27,7 +27,7 @@ function SubmitButton() {
   return (
     <Button
       type="submit"
-      className="w-full bg-black text-white py-4 font-bold tracking-widest hover:bg-primary hover:text-primary-foreground transition-colors mt-4"
+      className="w-full bg-accent text-accent-foreground py-4 font-bold tracking-widest hover:bg-accent/90 transition-colors mt-4"
     >
       SEND MESSAGE
     </Button>
@@ -199,7 +199,13 @@ export function Contact() {
               </div>
 
               <div className="flex items-start gap-3 pt-2">
-                <Checkbox id="popia" name="popia" className="mt-1" />
+                <Checkbox
+                  id="popia"
+                  name="popia"
+                  required
+                  aria-required="true"
+                  className="mt-1 border-primary focus-visible:ring-2 focus-visible:ring-primary data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                />
                 <div className="grid gap-1.5 leading-none">
                     <label
                     htmlFor="popia"

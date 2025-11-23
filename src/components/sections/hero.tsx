@@ -42,7 +42,11 @@ export function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <Button asChild size="lg" className="w-full sm:w-auto bg-white text-black font-bold hover:bg-primary transition-colors">
+              <Button
+                asChild
+                size="lg"
+                className="w-full sm:w-auto bg-accent text-accent-foreground font-bold hover:bg-accent/90 transition-colors"
+              >
                 <a href="#work">
                   View Case Studies <ArrowRight size={18} />
                 </a>
@@ -51,7 +55,7 @@ export function Hero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="w-full sm:w-auto border-2 border-white text-white font-semibold bg-white/5 hover:bg-white/15 transition-colors rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-sm"
+                className="w-full sm:w-auto border-2 border-primary text-white font-semibold hover:bg-primary/10 hover:text-primary transition-colors"
               >
                 <a href="#">
                   <Download size={18} /> Download CV
