@@ -8,7 +8,7 @@ export function Hero() {
   const profilePic = PlaceHolderImages.find((p) => p.id === 'profile-pic')!;
 
   return (
-    <header className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+    <header className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0 z-0 opacity-60">
         <Image
           src={heroBg.imageUrl}
@@ -21,7 +21,7 @@ export function Hero() {
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black z-0"></div>
 
-      <div className="relative z-10 container mx-auto px-4 pt-20 sm:px-6 lg:px-20">
+      <div className="relative z-10 container mx-auto px-4 pt-28 pb-16 sm:px-6 lg:px-20 lg:pt-32">
         <div className="flex flex-col items-start gap-12 lg:flex-row lg:items-center">
           <div className="w-full lg:w-2/3 text-left">
             <span className="text-primary font-bold tracking-[0.3em] text-xs uppercase animate-pulse">

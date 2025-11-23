@@ -34,7 +34,7 @@ const ServiceCard = ({
 
 export function Methodology() {
   return (
-    <section id="expertise" className="py-24 bg-gray-50">
+    <section id="expertise" className="py-24 bg-gray-50 scroll-mt-24">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-light mb-4 text-center">My Methodology</h2>
         <p className="text-center text-gray-500 max-w-2xl mx-auto mb-16">
