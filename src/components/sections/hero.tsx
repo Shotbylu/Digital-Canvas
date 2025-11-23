@@ -8,7 +8,7 @@ export function Hero() {
   const profilePic = PlaceHolderImages.find((p) => p.id === 'profile-pic')!;
 
   return (
-    <header className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+    <header className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0 z-0 opacity-60">
         <Image
           src={heroBg.imageUrl}
@@ -21,13 +21,13 @@ export function Hero() {
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black z-0"></div>
 
-      <div className="relative z-10 container mx-auto px-4 pt-28 pb-16 sm:px-6 lg:px-20 lg:pt-32">
-        <div className="flex flex-col items-start gap-12 lg:flex lg:flex-row-reverse lg:items-center">
-          <div className="w-full text-left lg:w-2/3">
+      <div className="relative z-10 container mx-auto px-6 pt-20">
+        <div className="flex flex-col md:flex-row gap-12 items-center">
+          <div className="md:w-2/3 text-center md:text-left">
             <span className="text-primary font-bold tracking-[0.3em] text-xs uppercase animate-pulse">
               JHB • Digital Marketing Specialist
             </span>
-            <h1 className="mt-6 mb-8 text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mt-6 mb-8 leading-[1.05] tracking-tight">
               Converting Ad spend <br />
               into{' '}
               <span className="font-light italic text-gray-300">
@@ -41,12 +41,8 @@ export function Hero() {
               run ads, I engineer ROI.
             </p>
 
-            <div className="flex w-full flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <Button
-                asChild
-                size="lg"
-                className="w-full flex-1 min-h-[44px] bg-white text-black font-bold transition-colors hover:bg-primary"
-              >
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <Button asChild size="lg" className="w-full sm:w-auto bg-white text-black font-bold hover:bg-primary transition-colors">
                 <a href="#work">
                   View Case Studies <ArrowRight size={18} />
                 </a>
@@ -55,7 +51,7 @@ export function Hero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="w-full flex-1 min-h-[44px] rounded-lg border-2 border-white bg-white/5 text-white font-semibold shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-sm transition-colors hover:bg-white/15"
+                className="w-full sm:w-auto border-2 border-white text-white font-semibold bg-white/5 hover:bg-white/15 transition-colors rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-sm"
               >
                 <a href="#">
                   <Download size={18} /> Download CV
@@ -64,22 +60,20 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative flex w-full justify-center lg:block lg:w-1/3">
-            <div className="mx-auto w-full max-w-sm overflow-hidden border-2 border-zinc-700 bg-zinc-800 grayscale transition-all duration-700 hover:grayscale-0 lg:ml-auto">
-              <div className="aspect-[3/4] w-full">
-                <Image
-                  src={profilePic.imageUrl}
-                  alt="Lungelo Sibisi"
-                  width={800}
-                  height={1067}
-                  className="h-full w-full object-cover"
-                  data-ai-hint={profilePic.imageHint}
-                />
-              </div>
+          <div className="hidden md:block md:w-1/3 relative">
+            <div className="aspect-[3/4] w-full bg-zinc-800 overflow-hidden border-2 border-zinc-700 grayscale hover:grayscale-0 transition-all duration-700">
+              <Image
+                src={profilePic.imageUrl}
+                alt="Lungelo Sibisi"
+                width={800}
+                height={1067}
+                className="w-full h-full object-cover"
+                data-ai-hint={profilePic.imageHint}
+              />
             </div>
-            <div className="absolute -bottom-6 left-1/2 w-max -translate-x-1/2 bg-primary p-6 font-mono text-xs text-primary-foreground lg:left-auto lg:-bottom-6 lg:-left-6 lg:translate-x-0">
+            <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 font-mono text-xs">
               <div>LUNGELO SIBISI</div>
-              <div className="mt-1 font-bold">SEO, CRM-ARCHITECT</div>
+              <div className="font-bold mt-1">SEO, CRM-ARCHITECT</div>
             </div>
           </div>
         </div>
