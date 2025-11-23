@@ -25,6 +25,7 @@ interface VideoModalProps {
 
 export function VideoModal({ campaign, initialAssetIndex, isOpen, onClose }: VideoModalProps) {
   const [activeIndex, setActiveIndex] = useState(initialAssetIndex);
+  const hasMultipleAssets = (campaign?.assets?.length || 0) > 1;
 
   useEffect(() => {
     setActiveIndex(initialAssetIndex);
@@ -63,10 +64,10 @@ export function VideoModal({ campaign, initialAssetIndex, isOpen, onClose }: Vid
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => (!open ? onClose() : undefined)}>
-      <DialogContent className="h-screen w-screen max-w-none overflow-hidden p-0 sm:h-[90vh] sm:w-[calc(100vw-2rem)]">
+      <DialogContent className="h-screen w-screen max-w-none overflow-hidden p-0 sm:h-[90vh] sm:w-[calc(100vw-2rem)] sm:max-h-[calc(100vh-2rem)] sm:rounded-2xl">
         {campaign && activeAsset && (
-          <div className="grid h-full w-full lg:grid-cols-[1.1fr_1fr]">
-            <div className="relative flex h-full flex-col bg-black">
+          <div className="grid h-full w-full min-h-0 lg:grid-cols-[1.1fr_1fr]">
+            <div className="relative flex h-full min-h-0 flex-col bg-black">
               <div className="relative flex-1">
                 {activeAsset.type === 'image' ? (
                   <Image
@@ -74,7 +75,7 @@ export function VideoModal({ campaign, initialAssetIndex, isOpen, onClose }: Vid
                     alt={activeAsset.alt}
                     width={activeAsset.width}
                     height={activeAsset.height}
-                    className="h-full w-full object-contain bg-black"
+                    className="h-full w-full bg-black object-contain"
                     loading="lazy"
                   />
                 ) : (
@@ -82,10 +83,11 @@ export function VideoModal({ campaign, initialAssetIndex, isOpen, onClose }: Vid
                     key={activeAsset.src}
                     poster={activeAsset.poster}
                     controls
-                    className="h-full w-full bg-black"
+                    playsInline
+                    className="h-full w-full bg-black object-contain"
                     preload="metadata"
                   >
-                    <source src={activeAsset.src} />
+                    <source src={activeAsset.src} type="video/mp4" />
                   </video>
                 )}
 
@@ -101,35 +103,51 @@ export function VideoModal({ campaign, initialAssetIndex, isOpen, onClose }: Vid
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 px-4 py-4 md:px-6">
-                <Button variant="secondary" size="icon" onClick={handlePrev} aria-label="Previous asset">
+              <div className="flex items-center gap-4 bg-black/40 px-4 py-4 backdrop-blur-sm md:px-6">
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  onClick={handlePrev}
+                  aria-label="Previous asset"
+                  disabled={!hasMultipleAssets}
+                  className="border-white/30 bg-white/20 text-white hover:bg-white/30 disabled:cursor-not-allowed disabled:bg-white/10"
+                >
                   <ArrowLeft className="h-4 w-4" />
                 </Button>
 
-                <div className="flex flex-1 items-center justify-center gap-2">
-                  {campaign.assets.map((asset, index) => (
-                    <button
-                      key={asset.src}
-                      type="button"
-                      onClick={() => setActiveIndex(index)}
-                      className={`h-2 w-2 rounded-full transition ${
-                        index === activeIndex
-                          ? 'bg-white shadow-[0_0_0_4px_rgba(255,255,255,0.25)]'
-                          : 'bg-white/50 hover:bg-white'
-                      }`}
-                      aria-label={`View asset ${index + 1}`}
-                      aria-current={index === activeIndex}
-                    />
-                  ))}
+                <div className="flex flex-1 items-center justify-center overflow-x-auto px-2" aria-label="Asset navigation dots">
+                  <div className="flex items-center gap-2 pb-1">
+                    {campaign.assets.map((asset, index) => (
+                      <button
+                        key={asset.src}
+                        type="button"
+                        onClick={() => setActiveIndex(index)}
+                        className={`h-2 w-2 shrink-0 rounded-full transition ${
+                          index === activeIndex
+                            ? 'bg-white shadow-[0_0_0_4px_rgba(255,255,255,0.25)]'
+                            : 'bg-white/50 hover:bg-white'
+                        }`}
+                        aria-label={`View asset ${index + 1}`}
+                        aria-current={index === activeIndex}
+                      />
+                    ))}
+                  </div>
                 </div>
 
-                <Button variant="secondary" size="icon" onClick={handleNext} aria-label="Next asset">
+                <Button
+                  variant="secondary"
+                  size="icon"
+                  onClick={handleNext}
+                  aria-label="Next asset"
+                  disabled={!hasMultipleAssets}
+                  className="border-white/30 bg-white/20 text-white hover:bg-white/30 disabled:cursor-not-allowed disabled:bg-white/10"
+                >
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
             </div>
 
-            <div className="flex h-full flex-col bg-white">
+            <div className="flex h-full min-h-0 flex-col bg-white">
               <ScrollArea className="h-full">
                 <div className="flex flex-col gap-6 p-6 pb-10">
                   <DialogHeader className="space-y-3">
@@ -247,7 +265,7 @@ export function VideoModal({ campaign, initialAssetIndex, isOpen, onClose }: Vid
                                 playsInline
                                 preload="metadata"
                               >
-                                <source src={asset.src} />
+                                <source src={asset.src} type="video/mp4" />
                               </video>
                             )}
                           </button>

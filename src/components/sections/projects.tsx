@@ -21,17 +21,13 @@ export function Projects() {
   }, []);
 
   return (
-    <section id="work" className="py-24 bg-white">
+    <section id="work" className="border-t border-gray-100 bg-white py-20 sm:py-24">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between mb-16">
-          <div>
-            <span className="text-primary font-bold tracking-widest text-xs uppercase">
-              Case Studies
-            </span>
-            <h2 className="text-4xl md:text-5xl font-light mt-4 text-black">
-              Campaign Impact
-            </h2>
-            <p className="mt-4 max-w-3xl text-lg text-muted-foreground">
+        <div className="mx-auto mb-16 max-w-5xl space-y-4 text-center md:text-left">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Case Studies</span>
+          <div className="space-y-3">
+            <h2 className="text-3xl font-semibold leading-tight text-black sm:text-4xl lg:text-5xl">Campaign Impact</h2>
+            <p className="mx-auto max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
               Explore recent work across paid media, CRM, web and integrated communications. Each case study opens directly to
               campaign storytelling, assets, KPIs, and links without extra filtering.
             </p>
