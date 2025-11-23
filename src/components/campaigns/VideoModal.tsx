@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Download, ExternalLink } from 'lucide-react';
 import type { Campaign } from '../../data/campaigns';
-import { trackAnalyticsEvent } from '../../utils/analytics';
+import { trackAnalyticsEvent } from './utils/analytics';
 
 interface VideoModalProps {
   campaign: Campaign | null;
