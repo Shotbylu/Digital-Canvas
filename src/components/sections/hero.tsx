@@ -60,8 +60,8 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="hidden md:block md:w-1/3 relative">
-            <div className="aspect-[3/4] w-full bg-zinc-800 overflow-hidden border-2 border-zinc-700 grayscale hover:grayscale-0 transition-all duration-700">
+          <div className="w-full md:w-1/3 relative flex justify-center md:justify-start">
+            <div className="aspect-[3/4] w-64 sm:w-72 md:w-full max-w-xs sm:max-w-sm md:max-w-full bg-zinc-800 overflow-hidden border-2 border-zinc-700 grayscale hover:grayscale-0 transition-all duration-700">
               <Image
                 src={profilePic.imageUrl}
                 alt="Lungelo Sibisi"
@@ -69,11 +69,12 @@ export function Hero() {
                 height={1067}
                 className="w-full h-full object-cover"
                 data-ai-hint={profilePic.imageHint}
+                priority
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 font-mono text-xs">
-              <div>LUNGELO SIBISI</div>
-              <div className="font-bold mt-1">SEO, CRM-ARCHITECT</div>
+            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-5 py-4 font-mono text-xs md:-bottom-6 md:-left-6 md:translate-x-0">
+              <div className="text-center md:text-left">LUNGELO SIBISI</div>
+              <div className="font-bold mt-1 text-center md:text-left">SEO, CRM-ARCHITECT</div>
             </div>
           </div>
         </div>
