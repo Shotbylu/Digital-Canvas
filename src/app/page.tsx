@@ -5,7 +5,6 @@ import { Hero } from "@/components/sections/hero";
 import { Stats } from "@/components/sections/stats";
 import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
-import { About } from "@/components/sections/about";
 
 // HIGH FIX #4: Lazy load below-fold sections for better LCP
 const Projects = dynamic(() => import('@/components/sections/projects').then(mod => ({ default: mod.Projects })), {
@@ -34,7 +33,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <About />
         <Stats />
 
         {/* BELOW THE FOLD - Lazy loaded */}
