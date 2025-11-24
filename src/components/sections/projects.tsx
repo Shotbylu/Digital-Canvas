@@ -1,62 +1,52 @@
 'use client';
-
-import { useMemo, useState } from 'react';
-import { CampaignCard, CampaignFilters } from '@/components/campaigns';
-import { campaigns as campaignData } from '@/lib/campaigns';
-import { FILTERS } from '@/components/campaigns/CampaignFilters';
+import { useCallback, useState } from 'react';
+import { CampaignCard, VideoModal } from '@/components/campaigns';
+import { campaigns as campaignData, type Campaign } from '@/lib/campaigns';
 
 export function Projects() {
-  const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [activeCampaign, setActiveCampaign] = useState<Campaign | null>(null);
+  const [initialAssetIndex, setInitialAssetIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const filteredCampaigns = useMemo(() => {
-    return campaignData.filter((campaign) => {
-      switch (activeFilter) {
-        case 'mazda':
-          return campaign.employer === 'Mazda Southern Africa';
-        case 'b2b':
-          return campaign.employer === 'Initium Venture Solutions';
-        case 'seo':
-          return campaign.channels.includes('Web') || campaign.channels.includes('Digital Platforms');
-        case 'paid':
-          return campaign.channels.some((channel) => ['Meta', 'Google', 'YouTube', 'TikTok', 'Programmatic'].includes(channel));
-        case 'comms':
-          return campaign.channels.some((channel) =>
-            ['Internal Comms', 'Media Relations', 'Stakeholder Engagement', 'Public Relations'].includes(channel)
-          );
-        default:
-          return true;
-      }
-    });
-  }, [activeFilter]);
+  const openCampaignModal = useCallback((campaign: Campaign, assetIndex: number) => {
+    setActiveCampaign(campaign);
+    setInitialAssetIndex(assetIndex);
+    setIsModalOpen(true);
+  }, []);
+
+  const closeCampaignModal = useCallback(() => {
+    setIsModalOpen(false);
+    setActiveCampaign(null);
+    setInitialAssetIndex(0);
+  }, []);
 
   return (
-    <section
-      id="projects"
-      className="scroll-mt-24 px-4 sm:px-6 lg:px-8 py-12 sm:py-16"
-      aria-labelledby="campaigns-heading"
-    >
-      <div className="mx-auto max-w-6xl">
-        <div className="mx-auto max-w-3xl space-y-3 text-center">
+    <section id="work" className="border-t border-gray-100 bg-white py-20 sm:py-24">
+      <div className="container mx-auto px-6">
+        <div className="mx-auto mb-16 max-w-5xl space-y-4 text-center">
           <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Case Studies</span>
-          <div className="space-y-2">
-            <h2 id="campaigns-heading" className="text-3xl font-semibold leading-tight sm:text-4xl">
-              Campaign Impact
-            </h2>
-            <p className="text-sm text-muted-foreground sm:text-base">
-              Mobile-first case studies spanning paid media, CRM, web, and communications. Tap a card to explore a focused 9:16
-              view with KPIs and outcomes.
+          <div className="space-y-3">
+            <h2 className="text-3xl font-semibold leading-tight text-black sm:text-4xl lg:text-5xl">Campaign Impact</h2>
+            <p className="mx-auto max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+              Explore recent work across paid media, CRM, web and integrated communications. Each case study opens directly to
+              campaign storytelling, assets, KPIs, and links without extra filtering.
             </p>
           </div>
         </div>
 
-        <CampaignFilters activeFilter={activeFilter} onChange={setActiveFilter} filters={FILTERS} />
-
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
-          {filteredCampaigns.map((campaign) => (
-            <CampaignCard key={campaign.id} campaign={campaign} />
+        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {campaignData.map((campaign) => (
+            <CampaignCard key={campaign.id} campaign={campaign} onOpen={openCampaignModal} />
           ))}
         </div>
       </div>
+
+      <VideoModal
+        campaign={activeCampaign}
+        initialAssetIndex={initialAssetIndex}
+        isOpen={isModalOpen}
+        onClose={closeCampaignModal}
+      />
     </section>
   );
 }

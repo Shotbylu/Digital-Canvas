@@ -12,7 +12,7 @@ export function Experience() {
   const EducationIcon = timelineIcons.education;
 
   return (
-    <section id="experience" className="scroll-mt-24 py-24 bg-white border-t border-gray-100">
+    <section id="background" className="py-24 bg-white border-t border-gray-100">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="mb-20">
           <div className="flex items-center gap-4 mb-12">
