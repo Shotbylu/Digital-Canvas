@@ -60,7 +60,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="hidden md:block md:w-1/3 relative">
+          <div className="w-full max-w-[300px] mx-auto md:mx-0 md:w-1/3 relative mt-8 md:mt-0">
             <div className="aspect-[3/4] w-full bg-zinc-800 overflow-hidden border-2 border-zinc-700 grayscale hover:grayscale-0 transition-all duration-700">
               <Image
                 src={profilePic.imageUrl}
@@ -71,7 +71,7 @@ export function Hero() {
                 data-ai-hint={profilePic.imageHint}
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 font-mono text-xs">
+            <div className="absolute -bottom-6 left-4 md:-left-6 bg-primary text-primary-foreground p-6 font-mono text-xs">
               <div>LUNGELO SIBISI</div>
               <div className="font-bold mt-1">SEO, CRM-ARCHITECT</div>
             </div>
