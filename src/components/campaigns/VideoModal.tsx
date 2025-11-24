@@ -162,7 +162,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
     <AnimatePresence>
       {isOpen && campaign && (
         <motion.div
-          className="fixed inset-0 z-[120] flex items-center justify-center bg-[rgba(0,0,0,0.9)] px-4 py-10"
+          className="fixed inset-0 z-[120] flex items-start sm:items-center justify-center bg-[rgba(0,0,0,0.9)] px-4 py-6 sm:py-10 overflow-y-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -176,7 +176,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
         >
           <motion.div
             ref={modalRef}
-            className="relative flex w-full max-w-6xl flex-col gap-6 overflow-hidden rounded-3xl bg-[#111827] p-6 shadow-2xl lg:flex-row"
+            className="relative flex w-full max-w-3xl sm:max-w-4xl lg:max-w-6xl flex-col gap-6 overflow-hidden rounded-3xl bg-[#111827] p-4 sm:p-6 shadow-2xl lg:flex-row max-h-[90vh]"
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
@@ -290,7 +290,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
               )}
             </div>
 
-            <div className="flex flex-1 flex-col gap-6 overflow-y-auto pr-2">
+            <div className="flex flex-1 flex-col gap-6 overflow-y-auto pr-1 sm:pr-2">
               <div>
                 <span className="inline-flex items-center rounded-full border border-[#fed7aa] bg-[#fff7ed] px-3 py-1 text-xs font-semibold text-[#c2410c]">
                   {campaign.employer}
