@@ -58,7 +58,7 @@ export function Contact() {
 
 
   return (
-    <section id="contact" className="py-24 bg-zinc-900 text-white">
+    <section id="contact" className="scroll-mt-24 py-24 bg-zinc-900 text-white">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16">
           <div>
