@@ -6,6 +6,7 @@ import type { LucideIcon } from 'lucide-react';
 import { ArrowRight } from 'lucide-react';
 import { MethodologyModal } from '@/components/ui/methodology-modal';
 import type { MethodologyKey } from '@/lib/methodology-details';
+import { bodyText, paddingX, paddingY, sectionHeadText } from '@/lib/responsive';
 
 const ServiceCard = ({
   icon: Icon,
@@ -52,15 +53,16 @@ export function Methodology() {
   };
 
   return (
-    <section id="expertise" className="py-24 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-light mb-4 text-center">My Methodology</h2>
-        <p className="text-center text-gray-500 max-w-2xl mx-auto mb-16">
-          Combining strategy, content, and code to deliver full-funnel
-          performance.
-        </p>
+    <section id="expertise" className={`bg-gray-50 ${paddingY}`}>
+      <div className={`mx-auto max-w-6xl ${paddingX}`}>
+        <div className="mb-14 text-center space-y-4">
+          <h2 className={`${sectionHeadText} text-gray-900`}>My Methodology</h2>
+          <p className={`${bodyText} text-gray-600 max-w-2xl mx-auto`}>
+            Combining strategy, content, and code to deliver full-funnel performance with smooth transitions across every touchpoint.
+          </p>
+        </div>
 
-        <div className="grid gap-6 grid-cols-1 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <ServiceCard
               key={service.number}

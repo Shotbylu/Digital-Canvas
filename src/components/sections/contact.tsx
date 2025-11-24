@@ -22,6 +22,7 @@ import {
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
+import { bodyText, paddingX, paddingY, sectionHeadText } from '@/lib/responsive';
 
 function SubmitButton() {
   return (
@@ -58,66 +59,54 @@ export function Contact() {
 
 
   return (
-    <section id="contact" className="py-24 bg-zinc-900 text-white">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-16">
-          <div>
-            <h2 className="text-4xl font-light mb-6">
-              Available for{' '}
-              <span className="text-primary font-serif italic">
-                remote collaboration
-              </span>
-              .
-            </h2>
-            <p className="text-gray-400 mb-8 leading-relaxed">
-              Based in Johannesburg. Open to freelance work and consulting.
-              Whether you need a paid media audit or a custom machine learning
-              model for your data, let&apos;s discuss.
+    <section id="contact" className={`bg-zinc-900 text-white ${paddingY}`}>
+      <div className={`mx-auto max-w-6xl ${paddingX}`}>
+        <div className="grid gap-12 lg:grid-cols-2">
+          <div className="space-y-6">
+            <h2 className={`${sectionHeadText} text-white`}>Available for <span className="text-primary font-serif italic">remote collaboration</span>.</h2>
+            <p className={`${bodyText} text-gray-300 leading-relaxed`}>
+              Based in Johannesburg. Open to freelance work and consulting. Whether you need a paid media audit or a custom machine learning model for your data, let&apos;s discuss.
             </p>
 
-            <div className="space-y-6 mt-12">
+            <div className="space-y-6 pt-4">
               <div className="flex items-center gap-4 text-gray-300">
-                <div className="w-12 h-12 bg-zinc-800 rounded-sm flex items-center justify-center border border-zinc-700">
+                <div className="flex h-12 w-12 items-center justify-center rounded-md border border-zinc-700 bg-zinc-800">
                   <MapPin size={20} className="text-primary" />
                 </div>
                 <div>
-                  <div className="text-xs text-gray-500 uppercase tracking-wider">
-                    Location
-                  </div>
+                  <div className="text-xs uppercase tracking-wider text-gray-500">Location</div>
                   <div className="font-medium">Johannesburg, South Africa</div>
                 </div>
               </div>
               <div className="flex items-center gap-4 text-gray-300">
-                <div className="w-12 h-12 bg-zinc-800 rounded-sm flex items-center justify-center border border-zinc-700">
+                <div className="flex h-12 w-12 items-center justify-center rounded-md border border-zinc-700 bg-zinc-800">
                   <Mail size={20} className="text-primary" />
                 </div>
                 <div>
-                  <div className="text-xs text-gray-500 uppercase tracking-wider">
-                    Email
-                  </div>
-                  <a href="mailto:lsibisi@icloud.com" className="font-medium hover:text-primary transition-colors">lsibisi@icloud.com</a>
+                  <div className="text-xs uppercase tracking-wider text-gray-500">Email</div>
+                  <a href="mailto:lsibisi@icloud.com" className="font-medium transition-colors hover:text-primary">lsibisi@icloud.com</a>
                 </div>
               </div>
             </div>
 
-            <div className="flex gap-4 mt-12">
+            <div className="flex gap-4 pt-2">
               <a
                 href="#"
-                className="p-3 bg-zinc-800 hover:bg-white hover:text-black transition-colors rounded-sm"
+                className="rounded-md bg-zinc-800 p-3 transition-colors hover:bg-white hover:text-black"
                 aria-label="LinkedIn Profile"
               >
                 <Linkedin size={20} />
               </a>
               <a
                 href="#"
-                className="p-3 bg-zinc-800 hover:bg-white hover:text-black transition-colors rounded-sm"
+                className="rounded-md bg-zinc-800 p-3 transition-colors hover:bg-white hover:text-black"
                 aria-label="GitHub Profile"
               >
                 <Github size={20} />
               </a>
               <a
                 href="#"
-                className="p-3 bg-zinc-800 hover:bg-white hover:text-black transition-colors rounded-sm"
+                className="rounded-md bg-zinc-800 p-3 transition-colors hover:bg-white hover:text-black"
                 aria-label="Instagram Profile"
               >
                 <Instagram size={20} />
@@ -125,13 +114,13 @@ export function Contact() {
             </div>
           </div>
 
-          <div className="bg-white p-8 md:p-10 rounded-sm text-gray-900">
-            <h3 className="text-2xl font-bold mb-8">Send a Message</h3>
-            <form ref={formRef} action={formAction} className="space-y-6">
+          <div className="rounded-lg bg-white p-6 text-gray-900 shadow-lg sm:p-8">
+            <h3 className="text-xl font-bold sm:text-2xl">Send a Message</h3>
+            <form ref={formRef} action={formAction} className="mt-8 space-y-6">
               <div>
                 <Label
                   htmlFor="name"
-                  className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2"
+                  className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500"
                 >
                   Name
                 </Label>
@@ -140,15 +129,15 @@ export function Contact() {
                   id="name"
                   name="name"
                   required
-                  className="w-full border-0 border-b border-gray-200 py-3 focus:outline-none focus:border-primary transition-colors bg-transparent rounded-none"
+                  className="w-full rounded-md border border-gray-200 bg-transparent px-4 py-3 text-gray-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
                   placeholder="Your Full Name"
                 />
-                 {state.errors?.name && <p className="text-sm text-red-500 mt-1">{state.errors.name[0]}</p>}
+                 {state.errors?.name && <p className="mt-1 text-sm text-red-500">{state.errors.name[0]}</p>}
               </div>
               <div>
                 <Label
                   htmlFor="email"
-                  className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2"
+                  className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500"
                 >
                   Email Address
                 </Label>
@@ -157,20 +146,20 @@ export function Contact() {
                   id="email"
                   name="email"
                   required
-                  className="w-full border-0 border-b border-gray-200 py-3 focus:outline-none focus:border-primary transition-colors bg-transparent rounded-none"
+                  className="w-full rounded-md border border-gray-200 bg-transparent px-4 py-3 text-gray-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
                   placeholder="name@company.co.za"
                 />
-                 {state.errors?.email && <p className="text-sm text-red-500 mt-1">{state.errors.email[0]}</p>}
+                 {state.errors?.email && <p className="mt-1 text-sm text-red-500">{state.errors.email[0]}</p>}
               </div>
               <div>
                  <Label
                   htmlFor="subject"
-                  className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2"
+                  className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500"
                 >
                   Subject
                 </Label>
                 <Select name="subject" defaultValue="General Inquiry">
-                    <SelectTrigger className="w-full border-0 border-b border-gray-200 py-3 focus:outline-none focus:border-primary transition-colors bg-transparent rounded-none">
+                    <SelectTrigger className="w-full rounded-md border border-gray-200 bg-transparent px-4 py-3 text-left text-gray-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30">
                         <SelectValue placeholder="Select a subject" />
                     </SelectTrigger>
                     <SelectContent>
@@ -184,7 +173,7 @@ export function Contact() {
               <div>
                 <Label
                   htmlFor="message"
-                  className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-2"
+                  className="mb-2 block text-xs font-bold uppercase tracking-wider text-gray-500"
                 >
                   Message
                 </Label>
@@ -192,10 +181,10 @@ export function Contact() {
                   id="message"
                   name="message"
                   rows={4}
-                  className="w-full border-0 border-b border-gray-200 py-3 focus:outline-none focus:border-primary transition-colors bg-transparent rounded-none resize-none"
+                  className="w-full rounded-md border border-gray-200 bg-transparent px-4 py-3 text-gray-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
                   placeholder="Tell me about your project..."
                 />
-                 {state.errors?.message && <p className="text-sm text-red-500 mt-1">{state.errors.message[0]}</p>}
+                 {state.errors?.message && <p className="mt-1 text-sm text-red-500">{state.errors.message[0]}</p>}
               </div>
 
               <div className="flex items-start gap-3 pt-2">
