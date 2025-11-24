@@ -1,9 +1,11 @@
+import { bodyText, paddingX, paddingY } from '@/lib/responsive';
+
 export function Footer() {
   return (
-    <footer className="bg-black text-white py-12 border-t border-zinc-800">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-        <p>&copy; {new Date().getFullYear()} Lungelo Sibisi. All rights reserved.</p>
-        <div className="flex gap-6 mt-4 md:mt-0">
+    <footer className={`bg-black text-white border-t border-zinc-800 ${paddingY}`}>
+      <div className={`mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 md:flex-row ${paddingX} ${bodyText} text-gray-400`}>
+        <p className="text-center md:text-left">&copy; {new Date().getFullYear()} Lungelo Sibisi. All rights reserved.</p>
+        <div className="flex gap-4 md:gap-6">
           <span className="flex items-center gap-2 text-xs uppercase tracking-wider">
             Made in South Africa 🇿🇦
           </span>

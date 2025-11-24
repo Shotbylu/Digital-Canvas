@@ -29,6 +29,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         {children}
