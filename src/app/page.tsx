@@ -28,10 +28,10 @@ export const revalidate = 3600; // Revalidate every hour
 
 export default function Home() {
   return (
-    <div className="font-body text-foreground bg-background">
+    <div className="font-body text-foreground bg-background min-h-screen flex flex-col">
       {/* ABOVE THE FOLD - Load immediately for fast LCP */}
       <Header />
-      <main>
+      <main className="flex-1 pt-16 sm:pt-20">
         <Hero />
         <Stats />
 

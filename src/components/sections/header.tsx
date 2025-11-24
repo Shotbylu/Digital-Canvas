@@ -18,7 +18,11 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Work', 'Expertise', 'Background'];
+  const navItems = [
+    { label: 'Work', href: '#projects' },
+    { label: 'Methodology', href: '#methodology' },
+    { label: 'Experience', href: '#experience' },
+  ];
 
   return (
     <>
@@ -46,11 +50,11 @@ export function Header() {
           >
             {navItems.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.href}
+                href={item.href}
                 className="hover:text-primary transition-colors"
               >
-                {item}
+                {item.label}
               </a>
             ))}
             <Button asChild variant={scrolled ? 'default' : 'outline'} className={cn(
@@ -78,14 +82,14 @@ export function Header() {
 
       {isMenuOpen && (
         <div className="fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8 animate-in fade-in duration-200 md:hidden">
-          {[...navItems, 'Contact'].map((item) => (
+          {[...navItems, { label: 'Contact', href: '#contact' }].map((item) => (
             <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={item.href}
+              href={item.href}
               onClick={() => setIsMenuOpen(false)}
               className="text-4xl font-light tracking-tighter hover:text-primary"
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </div>
