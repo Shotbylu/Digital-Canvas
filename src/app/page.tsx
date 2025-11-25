@@ -7,10 +7,6 @@ import { Contact } from "@/components/sections/contact";
 import { Footer } from "@/components/sections/footer";
 
 // HIGH FIX #4: Lazy load below-fold sections for better LCP
-const Projects = dynamic(() => import('@/components/sections/projects').then(mod => ({ default: mod.Projects })), {
-  loading: () => <div className="py-24 text-center">Loading projects...</div>,
-});
-
 const Methodology = dynamic(() => import('@/components/sections/methodology').then(mod => ({ default: mod.Methodology })), {
   loading: () => <div className="py-24 text-center">Loading methodology...</div>,
 });
@@ -39,7 +35,6 @@ export default function Home() {
         <Suspense fallback={<div className="py-16 text-center">Loading...</div>}>
           <PortfolioAssistant />
         </Suspense>
-        <Projects />
         <Methodology />
         <Experience />
         <Contact />
