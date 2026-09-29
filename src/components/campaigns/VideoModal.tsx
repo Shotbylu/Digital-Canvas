@@ -194,7 +194,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
             <div className="flex flex-col gap-4 lg:w-1/2">
               <div
                 ref={assetContainerRef}
-                className="relative w-full overflow-hidden rounded-2xl bg-[#111827] shadow-xl aspect-[9/16]"
+                className="relative flex h-[38vh] min-h-[260px] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#111827] shadow-xl sm:h-[52vh] lg:h-[65vh]"
               >
                 <AnimatePresence mode="wait">
                   {activeAsset && (
@@ -210,7 +210,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
                         assetVisible && !videoError && !isVideoPlaceholder ? (
                           <video
                             key={activeAsset.src}
-                            className="h-full w-full object-cover"
+                            className="h-full w-full object-contain"
                             controls
                             autoPlay
                             muted
@@ -227,7 +227,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
                               src={activeAsset.poster ?? activeAsset.src}
                               alt={activeAsset.alt}
                               loading="lazy"
-                              className="absolute inset-0 h-full w-full object-cover opacity-40"
+                              className="absolute inset-0 h-full w-full object-contain opacity-40"
                             />
                             <div className="relative mx-6 rounded-2xl bg-black/60 px-4 py-3 text-sm">
                               <p className="font-medium">Video preview unavailable in this workspace.</p>
@@ -243,7 +243,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
                           src={activeAsset.src}
                           alt={activeAsset.alt}
                           loading="lazy"
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-contain"
                         />
                       )}
                     </motion.div>
