@@ -162,7 +162,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
     <AnimatePresence>
       {isOpen && campaign && (
         <motion.div
-          className="fixed inset-0 z-[120] flex items-start sm:items-center justify-center bg-[rgba(0,0,0,0.9)] px-4 py-6 sm:py-10 overflow-y-auto"
+          className="fixed inset-0 z-[120] flex items-center justify-center overflow-y-auto bg-[rgba(23,23,21,0.58)] px-3 py-4 backdrop-blur-sm sm:px-6 sm:py-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -176,7 +176,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
         >
           <motion.div
             ref={modalRef}
-            className="relative flex w-full max-w-3xl sm:max-w-4xl lg:max-w-6xl flex-col gap-6 overflow-hidden rounded-3xl bg-[#111827] p-4 sm:p-6 shadow-2xl lg:flex-row max-h-[90vh]"
+            className="relative flex w-full max-w-6xl flex-col gap-0 overflow-hidden rounded-sm border border-[#deded9] bg-[#f8f8f6] shadow-[0_28px_90px_rgba(23,23,21,0.22)] lg:max-h-[90vh] lg:flex-row"
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 16 }}
@@ -185,16 +185,16 @@ const VideoModal: React.FC<VideoModalProps> = ({
             <button
               type="button"
               onClick={handleClose}
-              className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-[rgba(255,255,255,0.8)] text-[#111827] shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ffffff]"
+              className="absolute right-3 top-3 z-10 inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#deded9] bg-[#f8f8f6]/95 text-[#171715] transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#68a83e]"
               aria-label="Close campaign detail"
             >
               <X className="h-5 w-5" />
             </button>
 
-            <div className="flex flex-col gap-4 lg:w-1/2">
+            <div className="flex min-w-0 flex-col gap-3 border-b border-[#deded9] p-4 sm:p-6 lg:w-1/2 lg:border-b-0 lg:border-r lg:p-8">
               <div
                 ref={assetContainerRef}
-                className="relative flex h-[38vh] min-h-[260px] w-full items-center justify-center overflow-hidden rounded-2xl bg-[#111827] shadow-xl sm:h-[52vh] lg:h-[65vh]"
+                className="relative flex h-[34vh] min-h-[230px] w-full items-center justify-center overflow-hidden bg-[#ecece7] sm:h-[48vh] lg:h-[68vh] lg:max-h-[700px]"
               >
                 <AnimatePresence mode="wait">
                   {activeAsset && (
@@ -222,14 +222,14 @@ const VideoModal: React.FC<VideoModalProps> = ({
                             <source src={activeAsset.src} type="video/mp4" />
                           </video>
                         ) : (
-                          <div className="relative flex h-full w-full items-center justify-center bg-[#111827] text-center text-[rgba(255,255,255,0.8)]">
+                          <div className="relative flex h-full w-full items-center justify-center bg-[#ecece7] text-center text-[#555550]">
                             <img
                               src={activeAsset.poster ?? activeAsset.src}
                               alt={activeAsset.alt}
                               loading="lazy"
                               className="absolute inset-0 h-full w-full object-contain opacity-40"
                             />
-                            <div className="relative mx-6 rounded-2xl bg-black/60 px-4 py-3 text-sm">
+                            <div className="relative mx-6 border border-[#deded9] bg-[#f8f8f6]/95 px-4 py-3 text-sm shadow-sm">
                               <p className="font-medium">Video preview unavailable in this workspace.</p>
                               <p>
                                 Replace the placeholder file in <code>public/assets/campaigns/{campaign.id}</code> with a
@@ -255,7 +255,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
                     <button
                       type="button"
                       onClick={goToPrevious}
-                      className="pointer-events-auto inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white backdrop-blur"
+                      className="pointer-events-auto inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#deded9] bg-[#f8f8f6]/90 text-[#171715] shadow-sm transition hover:bg-white"
                       aria-label="Previous asset"
                       data-analytics="campaign-modal-previous"
                     >
@@ -275,13 +275,13 @@ const VideoModal: React.FC<VideoModalProps> = ({
               </div>
 
               {hasMultipleAssets && (
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-2 pb-1">
                   {assets.map((asset, index) => (
                     <button
                       key={asset.src}
                       type="button"
                       onClick={() => setCurrentIndex(index)}
-                      className={`h-2.5 w-8 rounded-full transition ${currentIndex === index ? 'bg-[#111827]' : 'bg-[#e5e7eb] hover:bg-[#e5e7eb]'
+                      className={`h-1.5 w-7 rounded-full transition ${currentIndex === index ? 'bg-[#68a83e]' : 'bg-[#deded9] hover:bg-[#b6b6ae]'
                         }`}
                       aria-label={`View asset ${index + 1} of ${assets.length}`}
                     />
@@ -290,29 +290,29 @@ const VideoModal: React.FC<VideoModalProps> = ({
               )}
             </div>
 
-            <div className="flex flex-1 flex-col gap-6 overflow-y-auto pr-1 sm:pr-2">
+            <div className="flex min-h-0 flex-1 flex-col gap-5 overflow-y-auto p-5 pt-14 sm:gap-6 sm:p-7 sm:pt-14 lg:w-1/2 lg:p-9 lg:pt-14">
               <div>
-                <span className="inline-flex items-center rounded-full border border-[#fed7aa] bg-[#fff7ed] px-3 py-1 text-xs font-semibold text-[#c2410c]">
+                <span className="inline-flex items-center border border-[#deded9] bg-white/70 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.12em] text-[#686862]">
                   {campaign.employer}
                 </span>
-                <h2 id={`campaign-${campaign.id}-title`} className="mt-3 text-2xl font-semibold text-[#ffffff]">
+                <h2 id={`campaign-${campaign.id}-title`} className="mt-3 max-w-xl text-3xl font-medium leading-tight tracking-[-0.045em] text-[#171715] sm:text-4xl">
                   {campaign.title}
                 </h2>
-                <p className="text-sm font-medium text-[rgba(255,255,255,0.7)]">{campaign.role}</p>
-                <p className="text-sm text-[rgba(255,255,255,0.7)]">{campaign.period}</p>
+                <p className="mt-2 text-sm font-medium text-[#555550]">{campaign.role}</p>
+                <p className="text-xs uppercase tracking-[0.1em] text-[#8a8a83]">{campaign.period}</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-[rgba(255,255,255,0.7)]">Summary</h3>
-                <p className="mt-2 text-sm text-[rgba(255,255,255,0.7)]">{campaign.summary}</p>
+                <h3 className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#777770]">Summary</h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-[#555550]">{campaign.summary}</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-[rgba(255,255,255,0.7)]">Responsibilities</h3>
-                <ul className="mt-2 space-y-2 text-sm text-[rgba(255,255,255,0.7)]">
+                <h3 className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#777770]">Responsibilities</h3>
+                <ul className="mt-2 space-y-2 text-[13px] leading-relaxed text-[#555550]">
                   {campaign.responsibilities.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <span aria-hidden="true" className="text-[#f97316]">•</span>
+                      <span aria-hidden="true" className="text-[#68a83e]">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -320,10 +320,10 @@ const VideoModal: React.FC<VideoModalProps> = ({
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-[rgba(255,255,255,0.7)]">Channels</h3>
-                <div className="mt-2 flex flex-wrap gap-2 text-sm">
+                <h3 className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#777770]">Channels</h3>
+                <div className="mt-2 flex flex-wrap gap-2 text-xs">
                   {campaign.channels.map((channel) => (
-                    <span key={channel} className="rounded-full border border-[#bfdbfe] bg-[#eff6ff] px-3 py-1 text-[#1d4ed8]">
+                    <span key={channel} className="rounded-sm border border-[#deded9] bg-white/70 px-2.5 py-1 text-[#555550]">
                       {channel}
                     </span>
                   ))}
@@ -331,22 +331,23 @@ const VideoModal: React.FC<VideoModalProps> = ({
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-[rgba(255,255,255,0.7)]">Key Results</h3>
-                <div className="mt-3 flex gap-2 overflow-x-auto pb-2 whitespace-nowrap sm:grid sm:grid-cols-2 sm:gap-2 sm:overflow-visible sm:whitespace-normal">
+                <h3 className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#777770]">Key Results</h3>
+                <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
                   {campaign.kpis.map((kpi) => (
                     <span
                       key={kpi.label}
-                      className="inline-flex flex-shrink-0 items-center rounded-full border border-[#bfdbfe] bg-[#dbeafe] px-3 py-1 text-xs font-semibold text-[#1d4ed8]"
+                      className="flex min-h-[70px] flex-col justify-between border border-[#deded9] bg-white/65 p-3"
                     >
-                      {kpi.label} {kpi.value}
+                      <strong className="text-lg font-medium tracking-[-0.04em] text-[#171715]">{kpi.value}</strong>
+                      <span className="text-[9px] font-medium uppercase tracking-[0.1em] text-[#777770]">{kpi.label}</span>
                     </span>
                   ))}
                 </div>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-[rgba(255,255,255,0.7)]">Tech Stack</h3>
-                <p className="mt-2 text-sm text-[rgba(255,255,255,0.7)]">{techList}</p>
+                <h3 className="text-[10px] font-semibold uppercase tracking-[0.14em] text-[#777770]">Tech Stack</h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-[#555550]">{techList}</p>
               </div>
 
               <div className="flex flex-wrap gap-3">
@@ -355,7 +356,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
                     href={campaign.caseStudyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#f97316] to-[#3b82f6] px-4 py-2 text-sm font-semibold text-[#ffffff] transition hover:from-[#ea580c] hover:to-[#2563eb] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+                    className="inline-flex items-center gap-2 rounded-sm bg-[#171715] px-4 py-2.5 text-xs font-medium text-white transition hover:bg-[#3a3a34] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#68a83e]"
                     data-analytics="campaign-modal-download"
                     onClick={() =>
                       trackAnalyticsEvent('campaign_modal_download_click', {
@@ -373,7 +374,7 @@ const VideoModal: React.FC<VideoModalProps> = ({
                     href={campaign.externalUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.7)] px-4 py-2 text-sm font-semibold text-[rgba(255,255,255,0.9)] transition hover:bg-[rgba(255,255,255,0.08)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2563eb]"
+                    className="inline-flex items-center gap-2 rounded-sm border border-[#b6b6ae] px-4 py-2.5 text-xs font-medium text-[#171715] transition hover:border-[#171715] hover:bg-white/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#68a83e]"
                     data-analytics="campaign-modal-external"
                     onClick={() =>
                       trackAnalyticsEvent('campaign_modal_external_click', {
