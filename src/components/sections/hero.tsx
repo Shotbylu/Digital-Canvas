@@ -6,7 +6,7 @@ export function Hero() {
   const profilePic = PlaceHolderImages.find((p) => p.id === 'profile-pic')!;
 
   return (
-    <section className="portfolio-hero">
+    <section id="top" className="portfolio-hero">
       <div className="portfolio-hero__inner">
         <div className="portfolio-hero__copy">
           <div className="eyebrow"><span className="eyebrow__dot" /> Johannesburg, South Africa <span className="eyebrow__divider">/</span> Digital marketing</div>
