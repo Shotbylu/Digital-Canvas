@@ -3,6 +3,26 @@
 @tailwind utilities;
 
 :root {
+  --background: 60 11% 97%;
+  --foreground: 60 1% 9%;
+  --card: 0 0% 100%;
+  --card-foreground: 60 1% 9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 60 1% 9%;
+  --primary: 96 45% 58%;
+  --primary-foreground: 60 1% 9%;
+  --secondary: 60 8% 93%;
+  --secondary-foreground: 60 1% 9%;
+  --muted: 60 7% 94%;
+  --muted-foreground: 60 3% 42%;
+  --accent: 96 45% 58%;
+  --accent-foreground: 60 1% 9%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 60 5% 84%;
+  --input: 60 5% 84%;
+  --ring: 96 45% 58%;
+  --radius: 0.25rem;
   --paper: #f8f8f6;
   --white: #fff;
   --ink: #171715;
