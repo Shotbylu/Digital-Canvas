@@ -48,7 +48,7 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onOpen, className
       data-analytics="campaign-card"
     >
       {/* Media Section - Strict Square */}
-      <div className="relative aspect-square w-full overflow-hidden bg-gray-100">
+      <div className="relative aspect-square w-full overflow-hidden bg-[#f1f1ee]">
         {primaryAsset ? (
           <button
             type="button"
@@ -64,7 +64,7 @@ const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onOpen, className
               width={1440}
               height={1440}
               sizes="(max-width: 768px) 100vw, 640px"
-              className="absolute inset-0 h-full w-full object-cover object-center transition duration-700 group-hover:scale-110"
+              className="absolute inset-0 h-full w-full object-contain object-center transition-opacity duration-500 group-hover:opacity-95"
             />
 
             {/* Overlay Gradient */}
