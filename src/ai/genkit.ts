@@ -1,15 +1,9 @@
 import { genkit } from 'genkit';
 import { googleAI } from '@genkit-ai/google-genai';
 
-// Temporary hardcoded API key for testing
-// TODO: Move to environment variable once we verify it works
-const API_KEY = 'AIzaSyBl-Ewcdlw5NVtwKVTr7cPC4NVuF6WeqG0';
-
+// The Google GenAI plugin reads GEMINI_API_KEY from the server environment.
+// Keep the key in Vercel's encrypted environment variables, never in source.
 export const ai = genkit({
-  plugins: [
-    googleAI({
-      apiKey: API_KEY,
-    })
-  ],
-  model: 'gemini-1.5-flash-latest', // Use latest stable version
+  plugins: [googleAI()],
+  model: googleAI.model('gemini-3.8-flash'),
 });
