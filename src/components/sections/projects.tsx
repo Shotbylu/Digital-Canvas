@@ -1,5 +1,6 @@
 'use client';
 import { useCallback, useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { CampaignCard, VideoModal } from '@/components/campaigns';
 import { campaigns as campaignData, type Campaign } from '@/lib/campaigns';
 
@@ -21,32 +22,22 @@ export function Projects() {
   }, []);
 
   return (
-    <section id="work" className="border-t border-gray-100 bg-white py-20 sm:py-24">
-      <div className="container mx-auto px-6">
-        <div className="mx-auto mb-16 max-w-5xl space-y-4 text-center">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Case Studies</span>
-          <div className="space-y-3">
-            <h2 className="text-3xl font-semibold leading-tight text-black sm:text-4xl lg:text-5xl">Campaign Impact</h2>
-            <p className="mx-auto max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
-              Explore recent work across paid media, CRM, web and integrated communications. Each case study opens directly to
-              campaign storytelling, assets, KPIs, and links without extra filtering.
-            </p>
-          </div>
+    <section id="work" className="work-section">
+      <div className="section-shell">
+        <div className="section-heading">
+          <div><span className="eyebrow">Selected work <span className="eyebrow__divider">/</span> 2022—2025</span><h2>Ideas in motion.</h2></div>
+          <p>A selection of campaigns and stories built to connect with people—and make a measurable difference.</p>
         </div>
-
-        <div className="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {campaignData.map((campaign) => (
-            <CampaignCard key={campaign.id} campaign={campaign} onOpen={openCampaignModal} />
+        <div className="work-grid">
+          {campaignData.map((campaign, index) => (
+            <div className={index === 0 ? 'work-card work-card--featured' : 'work-card'} key={campaign.id}>
+              <CampaignCard campaign={campaign} onOpen={openCampaignModal} />
+            </div>
           ))}
         </div>
+        <a className="work-footnote" href="#contact">Have a project in mind? Let&apos;s make it count <ArrowUpRight size={16} /></a>
       </div>
-
-      <VideoModal
-        campaign={activeCampaign}
-        initialAssetIndex={initialAssetIndex}
-        isOpen={isModalOpen}
-        onClose={closeCampaignModal}
-      />
+      <VideoModal campaign={activeCampaign} initialAssetIndex={initialAssetIndex} isOpen={isModalOpen} onClose={closeCampaignModal} />
     </section>
   );
 }

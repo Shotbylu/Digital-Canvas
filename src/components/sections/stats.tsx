@@ -1,47 +1,16 @@
-import { Globe, Database, BarChart3 } from 'lucide-react';
-
 export function Stats() {
+  const metrics = [
+    { value: 'R350k+', label: 'Managed media spend' },
+    { value: '4.2:1', label: 'Average return on ad spend' },
+    { value: 'R85', label: 'Best cost per lead' },
+    { value: '3', label: 'Industries served' },
+  ];
+
   return (
-    <section className="py-16 bg-black border-t border-zinc-800 text-white">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left divide-x divide-zinc-800">
-          <div className="md:pl-4">
-            <div className="text-4xl md:text-5xl font-bold text-primary">
-              R350 000+
-            </div>
-            <div className="text-xs text-gray-500 uppercase mt-2 tracking-widest">
-              Managed Ad Spend
-            </div>
-          </div>
-          <div className="pl-8">
-            <div className="text-4xl md:text-5xl font-bold text-white">
-              4.2:1
-            </div>
-            <div className="text-xs text-gray-500 uppercase mt-2 tracking-widest">
-              Average ROAS
-            </div>
-          </div>
-          <div className="pl-8">
-            <div className="text-4xl md:text-5xl font-bold text-white">R85</div>
-            <div className="text-xs text-gray-500 uppercase mt-2 tracking-widest">
-              Best CPL Achieved
-            </div>
-          </div>
-          <div className="pl-8 flex items-center justify-center md:justify-start gap-6 text-gray-400">
-            <Globe
-              size={32}
-              className="hover:text-white transition-colors"
-            />
-            <Database
-              size={32}
-              className="hover:text-white transition-colors"
-            />
-            <BarChart3
-              size={32}
-              className="hover:text-white transition-colors"
-            />
-          </div>
-        </div>
+    <section className="proof-strip" aria-label="Selected performance metrics">
+      <div className="proof-strip__inner">
+        <div className="proof-strip__intro"><span className="eyebrow">The work, in numbers</span><p>Performance grounded in real business goals.</p></div>
+        {metrics.map((item) => <div className="proof-metric" key={item.label}><strong>{item.value}</strong><span>{item.label}</span></div>)}
       </div>
     </section>
   );

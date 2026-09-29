@@ -1,84 +1,32 @@
 import Image from 'next/image';
-import { ArrowRight, Download } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 export function Hero() {
-  const heroBg = PlaceHolderImages.find((p) => p.id === 'hero-bg')!;
   const profilePic = PlaceHolderImages.find((p) => p.id === 'profile-pic')!;
 
   return (
-    <header className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-      <div className="absolute inset-0 z-0 opacity-60">
-        <Image
-          src={heroBg.imageUrl}
-          alt="Abstract Data"
-          fill
-          className="object-cover"
-          priority
-          data-ai-hint={heroBg.imageHint}
-        />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black z-0"></div>
-
-      <div className="relative z-10 container mx-auto px-6 pt-20">
-        <div className="flex flex-col md:flex-row gap-12 items-center">
-          <div className="md:w-2/3 text-center md:text-left">
-            <span className="text-primary font-bold tracking-[0.3em] text-xs uppercase animate-pulse">
-              JHB • Digital Marketing Specialist
-            </span>
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mt-6 mb-8 leading-[1.1] tracking-tight">
-              Converting Ad spend <br />
-              into{' '}
-              <span className="font-light italic text-gray-300">
-                revenue
-              </span>
-              .
-            </h1>
-            <p className="text-white max-w-xl text-lg mb-10 font-light leading-relaxed">
-              I specialize in SEO, paid social across Meta, Google, and LinkedIn Ads.
-              With experience in Automotive, Energy, and Mining, I don&apos;t just
-              run ads, I engineer ROI.
-            </p>
-
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              <Button asChild size="lg" className="w-full sm:w-auto bg-white text-black font-bold hover:bg-primary transition-colors">
-                <a href="#work">
-                  View Case Studies <ArrowRight size={18} />
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="w-full sm:w-auto border-2 border-white text-white font-semibold bg-white/5 hover:bg-white/15 transition-colors rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.1)] backdrop-blur-sm"
-              >
-                <a href="#">
-                  <Download size={18} /> Download CV
-                </a>
-              </Button>
-            </div>
+    <section id="top" className="portfolio-hero">
+      <div className="portfolio-hero__inner">
+        <div className="portfolio-hero__copy">
+          <div className="eyebrow"><span className="eyebrow__dot" /> Johannesburg, South Africa <span className="eyebrow__divider">/</span> Digital marketing</div>
+          <h1>Good ideas deserve <span>to grow.</span></h1>
+          <p className="portfolio-hero__intro">I&apos;m Lungelo Sibisi—a digital marketing specialist turning thoughtful strategy, sharp creative and performance data into work that moves businesses forward.</p>
+          <div className="portfolio-hero__actions">
+            <a className="button-dark" href="#work">Explore my work <ArrowUpRight size={17} /></a>
+            <a className="text-link" href="#background">More about me <ArrowDown size={15} /></a>
           </div>
-
-          <div className="w-full md:w-1/3 relative flex justify-center md:justify-start">
-            <div className="aspect-[3/4] w-64 sm:w-72 md:w-full max-w-xs sm:max-w-sm md:max-w-full bg-zinc-800 overflow-hidden border-2 border-zinc-700 grayscale hover:grayscale-0 transition-all duration-700">
-              <Image
-                src={profilePic.imageUrl}
-                alt="Lungelo Sibisi"
-                width={800}
-                height={1067}
-                className="w-full h-full object-cover"
-                data-ai-hint={profilePic.imageHint}
-                priority
-              />
-            </div>
-            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-5 py-4 font-mono text-xs md:-bottom-6 md:-left-6 md:translate-x-0">
-              <div className="text-center md:text-left">LUNGELO SIBISI</div>
-              <div className="font-bold mt-1 text-center md:text-left">SEO, CRM-ARCHITECT</div>
-            </div>
+          <div className="portfolio-hero__note"><span>Currently</span> Building full-funnel growth across automotive, energy &amp; mining</div>
+        </div>
+        <div className="portfolio-hero__visual">
+          <div className="portfolio-hero__image">
+            <Image src={profilePic.imageUrl} alt="Lungelo Sibisi" fill priority sizes="(max-width: 800px) 80vw, 38vw" className="object-cover" data-ai-hint={profilePic.imageHint} />
           </div>
+          <div className="portfolio-hero__image-caption"><span>LS</span><span>Strategy with a human point of view</span><ArrowUpRight size={16} /></div>
+          <div className="portfolio-hero__stamp">LS<span>•</span>JHB</div>
         </div>
       </div>
-    </header>
+      <div className="portfolio-hero__bottom"><span>Independent thinking. Measurable momentum.</span><a href="#work">Scroll to explore <ArrowDown size={14} /></a></div>
+    </section>
   );
 }

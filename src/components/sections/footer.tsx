@@ -1,14 +1,10 @@
+import { ArrowUpRight } from 'lucide-react';
+
 export function Footer() {
   return (
-    <footer className="bg-black text-white py-12 border-t border-zinc-800">
-      <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
-        <p>&copy; {new Date().getFullYear()} Lungelo Sibisi. All rights reserved.</p>
-        <div className="flex gap-6 mt-4 md:mt-0">
-          <span className="flex items-center gap-2 text-xs uppercase tracking-wider">
-            Made in South Africa 🇿🇦
-          </span>
-        </div>
-      </div>
+    <footer className="site-footer">
+      <div className="site-footer__top"><a className="site-mark site-mark--footer" href="#top">LUNGELO<span>.</span></a><p>Thoughtful marketing.<br />Work that moves people.</p><a href="#contact">Start a conversation <ArrowUpRight size={16} /></a></div>
+      <div className="site-footer__bottom"><span>© {new Date().getFullYear()} Lungelo Sibisi</span><span>Johannesburg, South Africa <span aria-hidden="true">·</span> Made with intention</span><a href="#top">Back to top ↑</a></div>
     </footer>
   );
 }
