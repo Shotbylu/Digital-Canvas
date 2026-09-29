@@ -20,10 +20,8 @@ export function Hero() {
         </div>
         <div className="portfolio-hero__visual">
           <div className="portfolio-hero__image">
-            <Image src={profilePic.imageUrl} alt="Lungelo Sibisi" fill priority sizes="(max-width: 800px) 80vw, 38vw" className="object-cover" data-ai-hint={profilePic.imageHint} />
+            <Image src={profilePic.imageUrl} alt="Lungelo Sibisi" fill priority sizes="(max-width: 800px) 80vw, 38vw" className="object-contain" data-ai-hint={profilePic.imageHint} />
           </div>
-          <div className="portfolio-hero__image-caption"><span>LS</span><span>Strategy with a human point of view</span><ArrowUpRight size={16} /></div>
-          <div className="portfolio-hero__stamp">LS<span>•</span>JHB</div>
         </div>
       </div>
       <div className="portfolio-hero__bottom"><span>Independent thinking. Measurable momentum.</span><a href="#work">Scroll to explore <ArrowDown size={14} /></a></div>
